@@ -39,6 +39,8 @@ firestore.rules    users/{uid} readable/writable only by that user
 Routes: `/` dashboard · `/tracks` · `/tracks/[track]` (filters, chapters) · `/tracks/[track]/[slug]` (question) · `/revise` + `/revise/[track]` (snap-scroll answers) · `/mock` (random round) · `/saved` (revise list, bookmarks, notes) · `/search-index.json` (static index fetched lazily by search, saved and mock).
 
 ### Key decisions
+The full reasoning (options considered, trade-offs) for each is in `docs/DECISIONS.md` — read it before changing architecture, data shape, rendering or design, and add an entry when you make a new decision of that kind.
+
 - **Question id** = `<track>/<slug>`; slug comes from the filename (`03-event-loop.md` → `event-loop`) and must be unique per track. Progress keys use `toKey(id)` = `track__slug` (Firestore field-path safe). Renaming a slug orphans users' progress for it — avoid.
 - **Server/client split:** pages read the filesystem and render markdown on the server at build time; interactive bits (progress buttons, answer reveal, clues, notes) are small client components that receive HTML or children.
 - **Progress data** (one Firestore doc `users/{uid}`): `solved`, `revise`, `bookmarks`, `chapters` are maps key → epoch ms; `notes` is key → text. Signed-out progress lives in localStorage; on sign-in it is merged (union) into the account. Writes use `updateDoc` with `FieldPath` for single keys.

@@ -24,6 +24,7 @@ Progress is stored in one document per user: `users/{uid}`.
 
 ## Content
 
+- Why the app is built this way: [`docs/DECISIONS.md`](./docs/DECISIONS.md)
 - Format and quality bar: [`docs/CONTENT_GUIDE.md`](./docs/CONTENT_GUIDE.md)
 - Track and chapter plan with target counts: [`docs/CONTENT_PLAN.md`](./docs/CONTENT_PLAN.md)
 - Validate everything (also prints counts per chapter): `npm run validate` · one track: `npm run validate -- react`
