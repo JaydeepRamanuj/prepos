@@ -3,7 +3,7 @@ title: "Implement a mini Zustand: createStore and a React hook with useSyncExter
 level: hard
 type: implement
 tags: [zustand, useSyncExternalStore, store, selectors, closures, implement]
-related: [state/zustand-store-basics, state/zustand-selectors-useshallow, react/use-sync-external-store, javascript/closure-private-state-store]
+related: [state/zustand-create-store, state/zustand-selectors-useshallow, react/use-sync-external-store, javascript/closure-private-state-store]
 ---
 
 ## Question

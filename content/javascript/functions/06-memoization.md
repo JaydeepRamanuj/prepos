@@ -3,7 +3,7 @@ title: "What is memoization? Implement memoize with a custom cache key"
 level: hard
 type: implement
 tags: [functions, memoization, caching, closures, map]
-related: [javascript/pure-functions-side-effects, javascript/closure, react/use-memo-use-callback]
+related: [javascript/pure-functions-side-effects, javascript/closure, react/memoization-cost-benefit]
 ---
 
 ## Question

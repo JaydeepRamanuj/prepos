@@ -3,7 +3,7 @@ title: "Build a product listing with search, filters, sort and URL-synced state"
 level: advanced
 type: implement
 tags: [filters, url-state, searchParams, debounce, derived-state, nextjs, e-commerce]
-related: [machine-coding/data-table, machine-coding/autocomplete-typeahead, nextjs/search-params-url-state]
+related: [machine-coding/data-table, machine-coding/autocomplete-typeahead]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "Layout vs template: what's the difference, and when would you reach for 
 level: medium
 type: concept
 tags: [layout, template, navigation, state, remount]
-related: [nextjs/app-router-file-conventions, nextjs/route-groups-private-folders, react/keys-reconciliation]
+related: [nextjs/app-router-file-conventions, nextjs/route-groups-private-folders, react/index-as-key]
 ---
 
 ## Question

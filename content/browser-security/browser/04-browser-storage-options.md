@@ -3,7 +3,7 @@ title: "Cookies vs localStorage vs sessionStorage vs IndexedDB vs Cache API — 
 level: easy
 type: concept
 tags: [storage, cookies, localstorage, indexeddb, cache-api]
-related: [browser-security/cookie-flags-and-token-storage, browser-security/service-worker-caching-strategies]
+related: [browser-security/cookie-flags-token-storage, browser-security/service-worker-caching-strategies]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "Why does a single Context cause the whole app to re-render, and how do y
 level: hard
 type: scenario
 tags: [context, re-render, use-sync-external-store, selectors, performance]
-related: [react/why-component-rerenders, react/state-colocation, state/zustand-selectors]
+related: [react/why-component-rerenders, react/state-colocation, state/zustand-selectors-useshallow]
 ---
 
 ## Question

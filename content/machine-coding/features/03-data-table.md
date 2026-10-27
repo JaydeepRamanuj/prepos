@@ -3,7 +3,7 @@ title: "Build a data table with sorting, filtering and pagination"
 level: hard
 type: implement
 tags: [data-table, sorting, filtering, pagination, useMemo, a11y]
-related: [machine-coding/infinite-scroll, machine-coding/autocomplete-typeahead, react/usememo-usecallback]
+related: [machine-coding/infinite-scroll, machine-coding/autocomplete-typeahead, react/memoization-cost-benefit]
 ---
 
 ## Question

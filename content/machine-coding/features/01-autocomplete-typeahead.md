@@ -3,7 +3,7 @@ title: "Build an autocomplete/typeahead with debouncing, race-condition safety a
 level: hard
 type: implement
 tags: [autocomplete, debounce, abort-controller, combobox, aria, keyboard, race-conditions]
-related: [machine-coding/dropdown-select, machine-coding/infinite-scroll, javascript/debounce-throttle]
+related: [machine-coding/dropdown-select, machine-coding/infinite-scroll, javascript/debounce]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "Build a Kanban board with drag and drop between columns"
 level: advanced
 type: implement
 tags: [kanban, drag-and-drop, html5-dnd, dnd-kit, reordering, a11y, state-design]
-related: [machine-coding/todo-app, machine-coding/file-explorer-tree, react/immutable-state-updates]
+related: [machine-coding/todo-app, machine-coding/file-explorer-tree, javascript/object-immutability-freeze]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "Build a countdown timer and stopwatch that stay accurate"
 level: medium
 type: implement
 tags: [timers, setInterval, useEffect, requestAnimationFrame, drift, cleanup, custom-hooks]
-related: [machine-coding/otp-input, react/useeffect-cleanup, javascript/event-loop]
+related: [machine-coding/otp-input, react/use-effect-cleanup, javascript/event-loop-basics]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "How does next/font work, and how does it prevent layout shift?"
 level: medium
 type: concept
 tags: [next-font, fonts, cls, font-display, self-hosting, variable-fonts]
-related: [nextjs/lcp-image-fix, performance/images-and-fonts-loading, html-css/modern-css-units-layers]
+related: [nextjs/lcp-image-fix, performance/images-and-fonts-loading, html-css/css-units-and-clamp]
 ---
 
 ## Question

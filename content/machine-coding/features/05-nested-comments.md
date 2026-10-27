@@ -3,7 +3,7 @@ title: "Build nested comments with replies, edit, delete and collapse"
 level: hard
 type: implement
 tags: [comments, recursion, tree, immutable-updates, optimistic-ui, forms]
-related: [machine-coding/file-explorer-tree, machine-coding/todo-app, react/controlled-uncontrolled]
+related: [machine-coding/file-explorer-tree, machine-coding/todo-app, react/controlled-vs-uncontrolled]
 ---
 
 ## Question

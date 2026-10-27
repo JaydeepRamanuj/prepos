@@ -3,7 +3,7 @@ title: "Build an accessible modal with <dialog>, focus handling and inert"
 level: hard
 type: implement
 tags: [dialog, modal, focus-trap, inert, aria-modal, showModal]
-related: [react/portals, html-css/keyboard-focus-basics, machine-coding/modal]
+related: [react/portals, html-css/keyboard-focus-basics, machine-coding/modal-dialog]
 ---
 
 ## Question

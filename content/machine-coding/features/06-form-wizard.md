@@ -3,7 +3,7 @@ title: "Build a multi-step form wizard with validation and persisted progress"
 level: hard
 type: implement
 tags: [forms, wizard, validation, zod, state-machine, localStorage, a11y]
-related: [machine-coding/progress-stepper, machine-coding/otp-input, state/forms-react-hook-form]
+related: [machine-coding/progress-stepper, machine-coding/otp-input, state/forms-zod-react-hook-form]
 ---
 
 ## Question

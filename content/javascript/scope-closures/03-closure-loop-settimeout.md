@@ -3,7 +3,7 @@ title: "Why does a var loop with setTimeout print 3, 3, 3 — and how do you fix
 level: medium
 type: output
 tags: [closures, var, let, settimeout, loops]
-related: [javascript/closure, javascript/var-let-const, javascript/iife-module-pattern, javascript/event-loop]
+related: [javascript/closure, javascript/var-let-const, javascript/iife-module-pattern, javascript/event-loop-basics]
 ---
 
 ## Question

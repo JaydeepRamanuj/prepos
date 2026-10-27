@@ -3,7 +3,7 @@ title: "Build a search-as-you-type component with debounce, loading, errors and 
 level: hard
 type: implement
 tags: [search, autocomplete, debounce, abort, accessibility, combobox]
-related: [react/use-debounce, react/fetch-in-effect-race, machine-coding/autocomplete, javascript/abort-controller-cancellation]
+related: [react/use-debounce, react/fetch-in-effect-race, machine-coding/autocomplete-typeahead, javascript/abort-controller-cancellation]
 ---
 
 ## Question

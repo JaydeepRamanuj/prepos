@@ -3,7 +3,7 @@ title: "Build a file explorer tree with recursion, expand/collapse and add/delet
 level: hard
 type: implement
 tags: [tree, recursion, immutable-updates, file-explorer, a11y, keyboard]
-related: [machine-coding/accordion, machine-coding/nested-comments, react/immutable-state-updates]
+related: [machine-coding/accordion, machine-coding/nested-comments, javascript/object-immutability-freeze]
 ---
 
 ## Question

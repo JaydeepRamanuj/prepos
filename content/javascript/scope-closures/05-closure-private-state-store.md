@@ -3,7 +3,7 @@ title: "Build a tiny store with closures: createStore with subscribe"
 level: hard
 type: implement
 tags: [closures, private-state, pub-sub, store, zustand]
-related: [javascript/closure, javascript/iife-module-pattern, state/zustand-store-basics]
+related: [javascript/closure, javascript/iife-module-pattern, state/zustand-create-store]
 ---
 
 ## Question

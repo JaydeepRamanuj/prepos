@@ -3,7 +3,7 @@ title: "What are React portals, and how do events and context behave through the
 level: medium
 type: concept
 tags: [portals, createPortal, modal, events, z-index, accessibility]
-related: [react/use-on-click-outside, machine-coding/modal, html-css/stacking-contexts]
+related: [react/use-on-click-outside, machine-coding/modal-dialog, html-css/stacking-contexts]
 ---
 
 ## Question

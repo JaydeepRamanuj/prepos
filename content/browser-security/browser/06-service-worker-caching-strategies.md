@@ -3,7 +3,7 @@ title: "How do service workers work, and which caching strategy would you use fo
 level: advanced
 type: design
 tags: [service-worker, pwa, cache-api, offline, caching-strategies]
-related: [browser-security/http-caching-headers, browser-security/browser-storage-options, performance/caching]
+related: [browser-security/http-caching, browser-security/browser-storage-options, performance/http-caching-static-assets]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "Build a compound component (Tabs) with implicit shared state"
 level: hard
 type: implement
 tags: [compound-components, context, composition, tabs, patterns]
-related: [react/children-slots, react/use-context-rerenders, react/headless-components, machine-coding/tabs]
+related: [react/children-slots, react/use-context-rerenders, react/headless-components, machine-coding/tabs-component]
 ---
 
 ## Question

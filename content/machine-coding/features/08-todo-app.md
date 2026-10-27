@@ -3,7 +3,7 @@ title: "Build a todo app with filters, persistence and optimistic updates"
 level: medium
 type: implement
 tags: [todo, useReducer, localStorage, filters, optimistic-ui, derived-state]
-related: [machine-coding/nested-comments, state/zustand-vs-redux, react/usereducer-vs-usestate]
+related: [machine-coding/nested-comments, state/choosing-state-library, react/use-reducer-vs-use-state]
 ---
 
 ## Question
