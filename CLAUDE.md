@@ -62,7 +62,7 @@ Work one track or chapter at a time. Don't spawn many parallel subagents — the
 
 ## Status (Oct 2026)
 
-App complete; production build passes. Content: 414 of 443 planned questions.
+App complete; production build passes. Content: 424 of 443 planned questions.
 
 | Track | Done / target | Missing chapters |
 |---|---|---|
@@ -79,7 +79,7 @@ App complete; production build passes. Content: 414 of 443 planned questions.
 | machine-coding | 20 / 20 | complete |
 | browser-security | 16 / 16 | complete |
 | backend | 14 / 14 | complete |
-| ai-engineering | 10 / 20 | agents, quality |
+| ai-engineering | 20 / 20 | complete |
 | debugging, behavioural | complete | — |
 
 Run `npm run validate` for exact live counts — update this table when a track is finished.
