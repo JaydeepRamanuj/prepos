@@ -62,7 +62,7 @@ Work one track or chapter at a time. Don't spawn many parallel subagents — the
 
 ## Status (Oct 2026)
 
-App complete; production build passes. Content: 315 of 443 planned questions.
+App complete; production build passes. Content: 335 of 443 planned questions.
 
 | Track | Done / target | Missing chapters |
 |---|---|---|
@@ -70,7 +70,8 @@ App complete; production build passes. Content: 315 of 443 planned questions.
 | react | 75 / 75 | complete |
 | nextjs | 72 / 72 | complete |
 | typescript | 20 / 20 | complete |
-| html-css, performance, scenarios, testing | 0 | all |
+| html-css | 20 / 20 | complete |
+| performance, scenarios, testing | 0 | all |
 | state | 7 / 20 | tanstack-query, forms; rest of zustand |
 | architecture | 10 / 18 | design-systems, data-layer |
 | machine-coding | 9 / 20 | features; one component |
