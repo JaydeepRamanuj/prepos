@@ -1,26 +1,206 @@
+@import "@fontsource-variable/literata/opsz.css";
+@import "@fontsource-variable/literata/opsz-italic.css";
+@import "@fontsource-variable/instrument-sans/index.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Tokens: a study notebook — cool paper, ink, highlighter ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f5f6f8;
+  --surface: #ffffff;
+  --sunken: #eef0f4;
+  --ink: #172033;
+  --ink-2: #4b556a;
+  --ink-3: #7a8397;
+  --line: #e1e5ec;
+  --line-strong: #c9cfda;
+  --blue: #2445c9;
+  --blue-soft: #e7ecff;
+  --hl: #ffe45c;
+  --hl-soft: #fff6c2;
+  --hl-ink: #2d2600;
+  --good: #23855c;
+  --good-soft: #e3f4ec;
+  --code-bg: #f3f5f9;
+
+  --lv-easy: #23855c;
+  --lv-medium: #2a6fd6;
+  --lv-hard: #c8711a;
+  --lv-advanced: #a3337f;
+}
+
+.dark {
+  --paper: #0e1424;
+  --surface: #151c2f;
+  --sunken: #111829;
+  --ink: #e5e8f1;
+  --ink-2: #a3abbf;
+  --ink-3: #737d95;
+  --line: #242d45;
+  --line-strong: #34405f;
+  --blue: #93a9ff;
+  --blue-soft: #1c2747;
+  --hl: #e6cd48;
+  --hl-soft: #3a3418;
+  --hl-ink: #1a1600;
+  --good: #5fcf9c;
+  --good-soft: #15302a;
+  --code-bg: #0f1526;
+
+  --lv-easy: #5fcf9c;
+  --lv-medium: #7aa8ff;
+  --lv-hard: #f0a457;
+  --lv-advanced: #e27cc2;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-hl: var(--hl);
+  --color-hl-soft: var(--hl-soft);
+  --color-hl-ink: var(--hl-ink);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Literata Variable", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 4.5rem;
 }
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+::selection {
+  background: var(--hl);
+  color: var(--hl-ink);
+}
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Highlighter stroke — the one signature mark of the app. */
+.hl-mark {
+  background: linear-gradient(
+    100deg,
+    transparent 0.2em,
+    var(--hl) 0.25em,
+    var(--hl) calc(100% - 0.25em),
+    transparent calc(100% - 0.2em)
+  );
+  background-size: 100% 0.55em;
+  background-position: 0 88%;
+  background-repeat: no-repeat;
+}
+
+/* ---------- Reading typography for rendered markdown ---------- */
+.prose-q {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: var(--ink);
+  max-width: 68ch;
+  overflow-wrap: break-word;
+}
+.prose-q > * + * { margin-top: 1em; }
+.prose-q h3 {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 650;
+  line-height: 1.35;
+  margin-top: 1.9em;
+  letter-spacing: -0.005em;
+}
+.prose-q h4 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 650;
+  margin-top: 1.5em;
+}
+.prose-q h3 + *, .prose-q h4 + * { margin-top: 0.5em; }
+.prose-q a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.prose-q strong { font-weight: 650; }
+.prose-q ul, .prose-q ol { padding-left: 1.3em; }
+.prose-q ul { list-style: disc; }
+.prose-q ol { list-style: decimal; }
+.prose-q li + li { margin-top: 0.35em; }
+.prose-q li > p { margin: 0; }
+.prose-q li::marker { color: var(--ink-3); }
+.prose-q blockquote {
+  border-left: 3px solid var(--hl);
+  padding: 0.2em 0 0.2em 1em;
+  color: var(--ink-2);
+}
+.prose-q hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
+.prose-q :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--sunken);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.08em 0.35em;
+  white-space: break-spaces;
+}
+.prose-q table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  max-width: 100%;
+}
+.prose-q th, .prose-q td {
+  border: 1px solid var(--line);
+  padding: 0.5em 0.75em;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-q th { background: var(--sunken); font-weight: 600; }
+
+/* Code blocks (rehype-pretty-code + shiki, dual theme) */
+.prose-q figure[data-rehype-pretty-code-figure] { margin-left: 0; margin-right: 0; }
+.prose-q pre {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9em 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.prose-q pre code { display: grid; min-width: max-content; }
+.prose-q pre [data-line] { padding: 0 1.1em; }
+.prose-q pre [data-highlighted-line] { background: var(--hl-soft); }
+.prose-q code[data-theme] span { color: var(--shiki-light); }
+.dark .prose-q code[data-theme] span { color: var(--shiki-dark); }
+@media (min-width: 768px) {
+  .prose-q pre { font-size: 0.84rem; }
+}
+
+/* Snap feed for Quick Revise */
+.snap-feed { scroll-snap-type: y mandatory; }
+.snap-feed > * { scroll-snap-align: start; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
