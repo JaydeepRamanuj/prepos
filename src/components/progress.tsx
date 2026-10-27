@@ -3,6 +3,7 @@
 import { useProgress } from "@/lib/progress/store";
 import { toKey } from "@/lib/content/types";
 import { cn } from "@/lib/utils";
+import { Progress } from "@/components/ui/progress";
 
 export function useSolvedCount(ids: string[]) {
   const solved = useProgress((s) => s.solved);
@@ -15,17 +16,7 @@ export function useSolvedCount(ids: string[]) {
 
 export function ProgressBar({ value, total, className }: { value: number; total: number; className?: string }) {
   const pct = total ? Math.round((value / total) * 100) : 0;
-  return (
-    <div
-      className={cn("h-1.5 w-full overflow-hidden rounded-full bg-line", className)}
-      role="progressbar"
-      aria-valuemin={0}
-      aria-valuemax={total}
-      aria-valuenow={value}
-    >
-      <div className="h-full rounded-full bg-good transition-[width] duration-500" style={{ width: `${pct}%` }} />
-    </div>
-  );
+  return <Progress value={pct} className={cn("[&>[data-slot=progress-indicator]]:bg-good", className)} aria-label={`${value} of ${total} solved`} />;
 }
 
 export function SolvedProgress({ ids, className, showText = true }: { ids: string[]; className?: string; showText?: boolean }) {

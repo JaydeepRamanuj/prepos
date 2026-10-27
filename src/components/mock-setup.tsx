@@ -9,7 +9,11 @@ import { readMock, writeMock, type MockSession } from "@/lib/progress/mock";
 import { useProgress } from "@/lib/progress/store";
 import { loadIndex } from "./search";
 import { LevelPips } from "./level";
-import { cn, qHref } from "@/lib/utils";
+import { qHref } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 interface T {
   id: string;
@@ -83,25 +87,20 @@ export function MockSetup({ tracks }: { tracks: T[] }) {
             );
           })}
         </ul>
-        <button
+        <Button
+          size="lg"
+          className="mt-6"
           onClick={() => {
             writeMock(null);
             setFinished(null);
             router.replace("/mock");
           }}
-          className="mt-6 h-11 rounded-lg bg-blue px-5 text-[15px] font-medium text-surface"
         >
           Set up another round
-        </button>
+        </Button>
       </div>
     );
   }
-
-  const chip = (on: boolean) =>
-    cn(
-      "rounded-full border px-3 py-1.5 text-[14px]",
-      on ? "border-ink bg-ink text-paper" : "border-line bg-surface text-ink-2 hover:border-line-strong",
-    );
 
   return (
     <div>
@@ -112,57 +111,53 @@ export function MockSetup({ tracks }: { tracks: T[] }) {
 
       <fieldset className="mt-8">
         <legend className="text-[15px] font-semibold">Tracks</legend>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {tracks.map((t) => {
-            const on = selected.includes(t.id);
-            return (
-              <button key={t.id} aria-pressed={on} onClick={() => setSelected((v) => (on ? v.filter((x) => x !== t.id) : [...v, t.id]))} className={chip(on)}>
-                {t.title}
-              </button>
-            );
-          })}
-        </div>
+        <ToggleGroup type="multiple" value={selected} onValueChange={setSelected} className="mt-3" aria-label="Tracks">
+          {tracks.map((t) => (
+            <ToggleGroupItem key={t.id} value={t.id} className="text-[14px]">
+              {t.title}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
       </fieldset>
 
       <fieldset className="mt-7">
         <legend className="text-[15px] font-semibold">Difficulty</legend>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {LEVELS.map((l) => {
-            const on = levels.includes(l);
-            return (
-              <button key={l} aria-pressed={on} onClick={() => setLevels((v) => (on ? v.filter((x) => x !== l) : [...v, l]))} className={chip(on)}>
-                {on ? LEVEL_LABEL[l] : <LevelPips level={l} />}
-              </button>
-            );
-          })}
-        </div>
+        <ToggleGroup type="multiple" value={levels} onValueChange={(v) => setLevels(v as Level[])} className="mt-3" aria-label="Difficulty">
+          {LEVELS.map((l) => (
+            <ToggleGroupItem key={l} value={l} aria-label={LEVEL_LABEL[l]}>
+              {levels.includes(l) ? LEVEL_LABEL[l] : <LevelPips level={l} />}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
       </fieldset>
 
       <fieldset className="mt-7">
         <legend className="text-[15px] font-semibold">Questions</legend>
-        <div className="mt-3 flex gap-2">
+        <ToggleGroup
+          type="single"
+          value={String(count)}
+          onValueChange={(v) => v && setCount(Number(v))}
+          className="mt-3"
+          aria-label="Number of questions"
+        >
           {COUNTS.map((n) => (
-            <button key={n} aria-pressed={count === n} onClick={() => setCount(n)} className={cn(chip(count === n), "w-14 tabular-nums")}>
+            <ToggleGroupItem key={n} value={String(n)} className="w-14 tabular-nums">
               {n}
-            </button>
+            </ToggleGroupItem>
           ))}
-        </div>
+        </ToggleGroup>
       </fieldset>
 
-      <label className="mt-6 flex items-center gap-2.5 text-[14.5px] text-ink-2">
-        <input type="checkbox" checked={skipSolved} onChange={(e) => setSkipSolved(e.target.checked)} className="h-4 w-4 accent-[var(--blue)]" />
+      <Label className="mt-6 text-[14.5px] font-normal text-ink-2">
+        <Checkbox checked={skipSolved} onCheckedChange={(v) => setSkipSolved(v === true)} />
         Prefer questions I haven&apos;t solved
-      </label>
+      </Label>
 
-      {error && <p className="mt-5 text-[14px] text-[var(--lv-hard)]">{error}</p>}
+      {error && <p className="mt-5 text-[14px] text-lv-hard">{error}</p>}
 
-      <button
-        onClick={start}
-        disabled={!selected.length}
-        className="mt-8 flex h-12 items-center gap-2 rounded-lg bg-blue px-6 text-[15.5px] font-medium text-surface disabled:opacity-40"
-      >
-        <Play className="h-4 w-4 fill-current" aria-hidden /> Start round
-      </button>
+      <Button size="lg" onClick={start} disabled={!selected.length} className="mt-8 h-12 px-6 text-[15.5px]">
+        <Play className="fill-current" aria-hidden /> Start round
+      </Button>
     </div>
   );
 }

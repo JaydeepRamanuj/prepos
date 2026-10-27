@@ -79,8 +79,9 @@ export const useProgress = create<ProgressState>()(
       partialize: ({ solved, revise, bookmarks, chapters, notes, prefs, lastVisited }) => ({
         solved, revise, bookmarks, chapters, notes, prefs, lastVisited,
       }),
+      // With synchronous localStorage this runs inside create(), before `useProgress` is assigned, so defer the write.
       onRehydrateStorage: () => () => {
-        useProgress.setState({ hydrated: true });
+        queueMicrotask(() => useProgress.setState({ hydrated: true }));
       },
     },
   ),

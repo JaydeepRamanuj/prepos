@@ -8,7 +8,10 @@ import { toKey } from "@/lib/content/types";
 import { useProgress } from "@/lib/progress/store";
 import { LevelPips } from "./level";
 import { Prose } from "./prose";
-import { cn, qHref } from "@/lib/utils";
+import { qHref } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Toggle } from "@/components/ui/toggle";
 
 interface Card {
   id: string;
@@ -44,32 +47,34 @@ export function ReviseFeed({ trackTitle, trackId, cards }: { trackTitle: string;
   return (
     <div className="-mx-4 flex h-[calc(100dvh-3.5rem)] flex-col">
       <div className="flex items-center gap-2 border-b border-line px-4 py-2">
-        <Link href="/revise" className="grid h-8 w-8 place-items-center rounded-lg text-ink-2 hover:bg-sunken" aria-label="Back to Quick revise">
-          <ChevronLeft className="h-5 w-5" />
-        </Link>
+        <Button asChild variant="ghost" size="icon-sm" aria-label="Back to Quick revise">
+          <Link href="/revise">
+            <ChevronLeft className="size-5" />
+          </Link>
+        </Button>
         <span className="min-w-0 flex-1 truncate text-[14.5px] font-medium">{trackTitle}</span>
-        <select
-          value={filter}
-          onChange={(e) => setFilter(e.target.value as Filter)}
-          className="rounded-full border border-line bg-surface px-2.5 py-1 text-[13px] text-ink-2"
-          aria-label="Which answers"
-        >
-          <option value="all">All</option>
-          <option value="todo">Unsolved</option>
-          <option value="revise">Revision list</option>
-        </select>
-        <button onClick={() => setShuffleSeed((s) => s + 1)} className="rounded-full border border-line bg-surface px-2.5 py-1 text-[13px] text-ink-2">
+        <Select value={filter} onValueChange={(v) => setFilter(v as Filter)}>
+          <SelectTrigger aria-label="Which answers" className="h-8 rounded-full px-3 text-[13px]">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="todo">Unsolved</SelectItem>
+            <SelectItem value="revise">Revision list</SelectItem>
+          </SelectContent>
+        </Select>
+        <Button variant="outline" size="sm" onClick={() => setShuffleSeed((s) => s + 1)} className="rounded-full">
           Shuffle
-        </button>
+        </Button>
       </div>
 
       {list.length === 0 ? (
         <div className="grid flex-1 place-items-center p-8 text-center">
           <div>
             <p className="text-[15px] text-ink-2">Nothing here with this filter.</p>
-            <button onClick={() => setFilter("all")} className="mt-3 text-[14px] font-medium text-blue">
+            <Button variant="link" onClick={() => setFilter("all")} className="mt-3 text-[14px] font-medium">
               Show all answers
-            </button>
+            </Button>
           </div>
         </div>
       ) : (
@@ -93,29 +98,27 @@ export function ReviseFeed({ trackTitle, trackId, cards }: { trackTitle: string;
                     <Prose html={c.html} className="text-[17px]" />
                   </div>
                   <div className="mt-6 flex flex-wrap items-center gap-2">
-                    <button
-                      onClick={() => toggle("solved", k)}
-                      aria-pressed={isSolved}
-                      className={cn(
-                        "flex h-9 items-center gap-1.5 rounded-full border px-3 text-[13.5px]",
-                        isSolved ? "border-good bg-good text-surface" : "border-line bg-surface text-ink-2",
-                      )}
+                    <Toggle
+                      variant="outline"
+                      pressed={isSolved}
+                      onPressedChange={() => toggle("solved", k)}
+                      className="rounded-full data-[state=on]:border-good data-[state=on]:bg-good data-[state=on]:text-surface"
                     >
-                      <Check className="h-4 w-4" aria-hidden /> {isSolved ? "Solved" : "Got it"}
-                    </button>
-                    <button
-                      onClick={() => toggle("revise", k)}
-                      aria-pressed={inRevise}
-                      className={cn(
-                        "flex h-9 items-center gap-1.5 rounded-full border px-3 text-[13.5px]",
-                        inRevise ? "border-hl bg-hl text-hl-ink" : "border-line bg-surface text-ink-2",
-                      )}
+                      <Check aria-hidden /> {isSolved ? "Solved" : "Got it"}
+                    </Toggle>
+                    <Toggle
+                      variant="outline"
+                      pressed={inRevise}
+                      onPressedChange={() => toggle("revise", k)}
+                      className="rounded-full data-[state=on]:border-hl data-[state=on]:bg-hl data-[state=on]:text-hl-ink"
                     >
-                      <RotateCcw className="h-4 w-4" aria-hidden /> {inRevise ? "In revision list" : "Revise later"}
-                    </button>
-                    <Link href={qHref(c.id)} className="ml-auto flex h-9 items-center gap-1 px-1 text-[13.5px] font-medium text-blue">
-                      Full answer <ArrowUpRight className="h-4 w-4" aria-hidden />
-                    </Link>
+                      <RotateCcw aria-hidden /> {inRevise ? "In revision list" : "Revise later"}
+                    </Toggle>
+                    <Button asChild variant="link" className="ml-auto">
+                      <Link href={qHref(c.id)}>
+                        Full answer <ArrowUpRight aria-hidden />
+                      </Link>
+                    </Button>
                   </div>
                   {i === 0 && list.length > 1 && <p className="mt-4 text-center text-[12.5px] text-ink-3">Swipe up for the next answer</p>}
                 </div>
@@ -124,9 +127,9 @@ export function ReviseFeed({ trackTitle, trackId, cards }: { trackTitle: string;
           })}
           <div className="flex min-h-full flex-col items-center justify-center gap-3 p-8 text-center">
             <p className="font-serif text-[20px]">That&apos;s every answer in {trackTitle}.</p>
-            <Link href={`/tracks/${trackId}`} className="text-[14.5px] font-medium text-blue">
-              Go to the track
-            </Link>
+            <Button asChild variant="link" className="text-[14.5px]">
+              <Link href={`/tracks/${trackId}`}>Go to the track</Link>
+            </Button>
           </div>
         </div>
       )}

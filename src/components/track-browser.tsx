@@ -8,6 +8,11 @@ import { useProgress } from "@/lib/progress/store";
 import { chapterKey, cn, qHref } from "@/lib/utils";
 import { LevelPips, TypeChip } from "./level";
 import { ProgressBar } from "./progress";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type Status = "all" | "todo" | "solved" | "revise" | "bookmarked";
 const STATUS_LABEL: Record<Status, string> = {
@@ -17,6 +22,8 @@ const STATUS_LABEL: Record<Status, string> = {
   revise: "To revise",
   bookmarked: "Bookmarked",
 };
+
+const FILTER_TRIGGER = "h-8 shrink-0 rounded-full px-3 text-[13px]";
 
 export function TrackBrowser({ track, questions }: { track: TrackMeta; questions: QuestionIndexEntry[] }) {
   const { solved, revise, bookmarks, chapters, hydrated, toggle } = useProgress();
@@ -45,62 +52,55 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
     <div className="mt-8">
       {/* Filters */}
       <div className="sticky top-14 z-30 -mx-4 border-b border-line bg-paper/90 px-4 py-2.5 backdrop-blur-md">
-        <div className="flex gap-2 overflow-x-auto pb-0.5 [scrollbar-width:none]">
-          {LEVELS.map((l) => {
-            const on = levels.includes(l);
-            return (
-              <button
-                key={l}
-                onClick={() => setLevels((v) => (on ? v.filter((x) => x !== l) : [...v, l]))}
-                aria-pressed={on}
-                className={cn(
-                  "flex shrink-0 items-center rounded-full border px-2.5 py-1 text-[13px]",
-                  on ? "border-ink bg-ink text-paper" : "border-line bg-surface text-ink-2 hover:border-line-strong",
-                )}
-              >
-                {on ? LEVEL_LABEL[l] : <LevelPips level={l} />}
-              </button>
-            );
-          })}
-          <span className="mx-1 w-px shrink-0 bg-line" aria-hidden />
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value as Status)}
-            className="shrink-0 rounded-full border border-line bg-surface px-2.5 py-1 text-[13px] text-ink-2"
-            aria-label="Filter by status"
-          >
-            {(Object.keys(STATUS_LABEL) as Status[]).map((s) => (
-              <option key={s} value={s}>
-                {STATUS_LABEL[s]}
-              </option>
+        <div className="flex items-center gap-2 overflow-x-auto pb-0.5 [scrollbar-width:none]">
+          <ToggleGroup type="multiple" value={levels} onValueChange={(v) => setLevels(v as Level[])} className="shrink-0 flex-nowrap" aria-label="Filter by difficulty">
+            {LEVELS.map((l) => (
+              <ToggleGroupItem key={l} value={l} size="sm" aria-label={LEVEL_LABEL[l]}>
+                {levels.includes(l) ? LEVEL_LABEL[l] : <LevelPips level={l} />}
+              </ToggleGroupItem>
             ))}
-          </select>
-          {typesPresent.length > 1 && (
-            <select
-              value={type}
-              onChange={(e) => setType(e.target.value as QuestionType | "all")}
-              className="shrink-0 rounded-full border border-line bg-surface px-2.5 py-1 text-[13px] text-ink-2"
-              aria-label="Filter by type"
-            >
-              <option value="all">All types</option>
-              {typesPresent.map((t) => (
-                <option key={t} value={t}>
-                  {TYPE_LABEL[t]}
-                </option>
+          </ToggleGroup>
+          <Separator orientation="vertical" className="mx-1 h-5 shrink-0" />
+          <Select value={status} onValueChange={(v) => setStatus(v as Status)}>
+            <SelectTrigger className={FILTER_TRIGGER} aria-label="Filter by status">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {(Object.keys(STATUS_LABEL) as Status[]).map((s) => (
+                <SelectItem key={s} value={s}>
+                  {STATUS_LABEL[s]}
+                </SelectItem>
               ))}
-            </select>
+            </SelectContent>
+          </Select>
+          {typesPresent.length > 1 && (
+            <Select value={type} onValueChange={(v) => setType(v as QuestionType | "all")}>
+              <SelectTrigger className={FILTER_TRIGGER} aria-label="Filter by type">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All types</SelectItem>
+                {typesPresent.map((t) => (
+                  <SelectItem key={t} value={t}>
+                    {TYPE_LABEL[t]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           )}
           {filtered && (
-            <button
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => {
                 setLevels([]);
                 setType("all");
                 setStatus("all");
               }}
-              className="flex shrink-0 items-center gap-1 rounded-full px-2 py-1 text-[13px] text-blue"
+              className="shrink-0 rounded-full text-primary hover:text-primary"
             >
-              <RotateCcw className="h-3.5 w-3.5" aria-hidden /> Clear
-            </button>
+              <RotateCcw aria-hidden /> Clear
+            </Button>
           )}
         </div>
       </div>
@@ -134,16 +134,15 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
                   <p className="mt-0.5 text-[13.5px] text-ink-2">{c.description}</p>
                 </div>
                 {hydrated && done < all.length && (
-                  <button
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => toggle("chapters", ck)}
-                    className={cn(
-                      "shrink-0 rounded-full border px-2.5 py-1 text-[12.5px]",
-                      chapters[ck] ? "border-good bg-good-soft text-good" : "border-line text-ink-3 hover:text-ink",
-                    )}
+                    className={cn("shrink-0 rounded-full text-[12.5px]", chapters[ck] ? "border-good bg-good-soft text-good hover:text-good" : "text-ink-3 hover:text-ink")}
                     aria-pressed={!!chapters[ck]}
                   >
                     {chapters[ck] ? "Marked done" : "Mark done"}
-                  </button>
+                  </Button>
                 )}
               </div>
               <div className="mt-2.5 flex items-center gap-3">
@@ -174,12 +173,12 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
                         )}
                       </button>
                       <Link href={qHref(q.id)} className="group flex min-w-0 flex-1 flex-col gap-1 py-3 pl-2.5 pr-4 hover:bg-sunken/50">
-                        <span className={cn("text-[15px] leading-snug group-hover:text-blue", isSolved && "text-ink-2")}>{q.title}</span>
+                        <span className={cn("text-[15px] leading-snug group-hover:text-primary", isSolved && "text-ink-2")}>{q.title}</span>
                         <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
                           <LevelPips level={q.level} />
                           {q.type !== "concept" && <TypeChip type={q.type} />}
-                          {hydrated && revise[k] && <span className="rounded bg-hl-soft px-1.5 text-[12px] text-ink">Revise</span>}
-                          {hydrated && bookmarks[k] && <Bookmark className="h-3.5 w-3.5 fill-current text-blue" aria-label="Bookmarked" />}
+                          {hydrated && revise[k] && <Badge variant="highlight">Revise</Badge>}
+                          {hydrated && bookmarks[k] && <Bookmark className="h-3.5 w-3.5 fill-current text-primary" aria-label="Bookmarked" />}
                         </span>
                       </Link>
                     </li>

@@ -7,6 +7,8 @@ import { useProgress } from "@/lib/progress/store";
 import { toKey } from "@/lib/content/types";
 import { useMockFor } from "@/lib/progress/mock";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Toggle } from "@/components/ui/toggle";
 
 export function QuestionActions({ id, className }: { id: string; className?: string }) {
   const k = toKey(id);
@@ -15,33 +17,36 @@ export function QuestionActions({ id, className }: { id: string; className?: str
   const bookmarked = useProgress((s) => s.hydrated && !!s.bookmarks[k]);
   const toggle = useProgress((s) => s.toggle);
 
-  const base = "flex h-9 items-center gap-1.5 rounded-full border px-3 text-[13.5px] transition-colors";
   return (
     <div className={cn("flex flex-wrap gap-2", className)}>
-      <button
-        onClick={() => toggle("solved", k)}
-        aria-pressed={solved}
-        className={cn(base, solved ? "border-good bg-good text-surface" : "border-line bg-surface text-ink-2 hover:border-line-strong")}
+      <Toggle
+        variant="outline"
+        pressed={solved}
+        onPressedChange={() => toggle("solved", k)}
+        className="rounded-full data-[state=on]:border-good data-[state=on]:bg-good data-[state=on]:text-surface"
       >
-        <Check className="h-4 w-4" strokeWidth={2.4} aria-hidden />
+        <Check className="size-4" strokeWidth={2.4} aria-hidden />
         {solved ? "Solved" : "Mark solved"}
-      </button>
-      <button
-        onClick={() => toggle("revise", k)}
-        aria-pressed={revise}
-        className={cn(base, revise ? "border-hl bg-hl text-hl-ink" : "border-line bg-surface text-ink-2 hover:border-line-strong")}
+      </Toggle>
+      <Toggle
+        variant="outline"
+        pressed={revise}
+        onPressedChange={() => toggle("revise", k)}
+        className="rounded-full data-[state=on]:border-hl data-[state=on]:bg-hl data-[state=on]:text-hl-ink"
       >
-        <RotateCcw className="h-4 w-4" aria-hidden />
+        <RotateCcw aria-hidden />
         {revise ? "In revision list" : "Revise later"}
-      </button>
-      <button
-        onClick={() => toggle("bookmarks", k)}
-        aria-pressed={bookmarked}
+      </Toggle>
+      <Toggle
+        variant="outline"
+        size="icon"
+        pressed={bookmarked}
+        onPressedChange={() => toggle("bookmarks", k)}
         aria-label={bookmarked ? "Remove bookmark" : "Bookmark"}
-        className={cn(base, "px-2.5", bookmarked ? "border-blue bg-blue-soft text-blue" : "border-line bg-surface text-ink-2 hover:border-line-strong")}
+        className="rounded-full data-[state=on]:border-primary data-[state=on]:bg-accent data-[state=on]:text-primary"
       >
-        <Bookmark className={cn("h-4 w-4", bookmarked && "fill-current")} aria-hidden />
-      </button>
+        <Bookmark className={cn(bookmarked && "fill-current")} aria-hidden />
+      </Toggle>
     </div>
   );
 }
@@ -64,25 +69,21 @@ export function NextBar({ id, nextHref, nextLabel }: { id: string; nextHref: str
       </div>
       <div className="flex gap-2">
         {!solved && (
-          <button
+          <Button
             onClick={() => {
               toggle("solved", k);
               router.push(nextHref);
             }}
-            className="flex h-10 flex-1 items-center justify-center gap-1.5 rounded-lg bg-blue px-4 text-[14px] font-medium text-surface sm:flex-none"
+            className="h-10 flex-1 px-4 sm:flex-none"
           >
-            <Check className="h-4 w-4" aria-hidden /> Solved, next
-          </button>
+            <Check aria-hidden /> Solved, next
+          </Button>
         )}
-        <Link
-          href={nextHref}
-          className={cn(
-            "flex h-10 flex-1 items-center justify-center gap-1.5 rounded-lg px-4 text-[14px] sm:flex-none",
-            solved ? "bg-blue font-medium text-surface" : "border border-line text-ink-2 hover:border-line-strong",
-          )}
-        >
-          {solved ? "Next" : "Skip"} <ArrowRight className="h-4 w-4" aria-hidden />
-        </Link>
+        <Button asChild variant={solved ? "default" : "outline"} className="h-10 flex-1 px-4 sm:flex-none">
+          <Link href={nextHref}>
+            {solved ? "Next" : "Skip"} <ArrowRight aria-hidden />
+          </Link>
+        </Button>
       </div>
     </div>
   );

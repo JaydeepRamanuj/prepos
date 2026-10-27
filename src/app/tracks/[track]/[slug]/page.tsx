@@ -141,7 +141,7 @@ export default async function QuestionPage({ params }: PageProps<"/tracks/[track
             <span className="flex items-center gap-1 text-[12.5px] text-ink-3">
               <ChevronLeft className="h-3.5 w-3.5" aria-hidden /> Previous
             </span>
-            <span className="line-clamp-2 group-hover:text-blue">{prev.title}</span>
+            <span className="line-clamp-2 group-hover:text-primary">{prev.title}</span>
           </Link>
         ) : (
           <span />
@@ -151,7 +151,7 @@ export default async function QuestionPage({ params }: PageProps<"/tracks/[track
             <span className="flex items-center gap-1 text-[12.5px] text-ink-3">
               Next <ChevronRight className="h-3.5 w-3.5" aria-hidden />
             </span>
-            <span className="line-clamp-2 group-hover:text-blue">{next.title}</span>
+            <span className="line-clamp-2 group-hover:text-primary">{next.title}</span>
           </Link>
         )}
       </nav>

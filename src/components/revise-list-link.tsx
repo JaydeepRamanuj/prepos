@@ -9,11 +9,11 @@ export function ReviseListLink() {
   if (!n) return null;
   return (
     <Link href="/saved" className="mt-6 flex items-center gap-3 rounded-xl border border-hl bg-hl-soft px-4 py-3.5">
-      <RotateCcw className="h-4 w-4 text-ink-2" aria-hidden />
+      <RotateCcw className="size-4 text-ink-2" aria-hidden />
       <span className="flex-1 text-[15px]">
         Your revision list has <strong className="font-semibold">{n}</strong> question{n === 1 ? "" : "s"}
       </span>
-      <span className="text-[13.5px] font-medium text-blue">Open</span>
+      <span className="text-[13.5px] font-medium text-primary">Open</span>
     </Link>
   );
 }

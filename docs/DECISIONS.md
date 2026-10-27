@@ -127,3 +127,11 @@ Why PrepOS is built the way it is. One entry per decision: context, options cons
 **Decision.** Write one track (or chapter) at a time, checking quality before moving on. If delegation is needed, use one mid-tier (Sonnet) subagent at a time.
 
 **Trade-off.** Slower total throughput; predictable usage and better review of each batch.
+
+## D-15 Controls from shadcn/ui on Radix, restyled with the notebook tokens
+
+**Context.** Controls were hand-rolled per screen: native `<select>` menus (unstyled in some browsers), a custom search overlay with a focus box around its input, checkboxes styled with `accent-color`, and a dozen button and chip variants with different radii and heights. Accessibility (focus, keyboard, `aria-pressed`, dialog focus trap) was re-implemented each time, and sometimes missing.
+
+**Decision.** Adopt the shadcn/ui pattern: source-owned components in `src/components/ui/` built on Radix primitives and `class-variance-authority`, configured by `components.json`. `globals.css` defines shadcn's semantic names (`--background`, `--primary`, `--muted`, `--accent`, …) as aliases of the notebook palette, so one token change restyles every control in both themes. Components use semantic classes (`bg-primary`, `bg-accent`, `text-muted-foreground`) and never hardcoded colors. Brand-specific roles stay as named tokens (`bg-hl`, `text-good`, `text-lv-hard`).
+
+**Trade-off.** More dependencies (Radix packages, CVA) and a larger component surface to maintain. In return, native-quality keyboard and screen-reader behavior comes from Radix, and the look stays in one place. The components are copied into the repo, so they can be edited freely rather than upgraded through a package.
