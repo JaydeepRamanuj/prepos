@@ -31,7 +31,8 @@ src/lib/progress/  store.ts (Zustand + localStorage persist), sync.tsx (auth + F
                    mock.ts (mock round session in sessionStorage)
 src/lib/firebase/  client.ts (lazy init; firebaseEnabled=false when env vars missing)
 src/app/           routes (all static via generateStaticParams, dynamicParams=false)
-src/components/    UI; question/ holds the question-page client pieces
+src/components/    UI; question/ holds the question-page client pieces; ui/ holds shadcn-style primitives (Radix + CVA)
+components.json    shadcn/ui config (new primitives: copy in by hand or with the shadcn CLI)
 scripts/validate-content.ts
 firestore.rules    users/{uid} readable/writable only by that user
 ```
@@ -50,6 +51,8 @@ The full reasoning (options considered, trade-offs) for each is in `docs/DECISIO
 ## Design system
 
 "Study notebook": cool paper + ink-blue, a highlighter-yellow accent used sparingly (answer reveal, revise state, `.hl-mark` underline stroke). Colors are CSS variables in `src/app/globals.css` (light + `.dark`) exposed as Tailwind colors: `paper surface sunken ink ink-2 ink-3 line line-strong blue blue-soft hl hl-soft hl-ink good good-soft`, plus `--lv-easy/medium/hard/advanced`. Fonts: `font-serif` (Literata) for headings and reading text, `font-sans` (Instrument Sans) for UI, `font-mono` (JetBrains Mono) for code. Rendered markdown uses the `.prose-q` class. Difficulty is shown with `LevelPips` (1–4 filled dots + label). Mobile-first: bottom nav on small screens, max reading width ~720px. Use these tokens; don't introduce new colors or fonts ad hoc.
+
+Controls come from `src/components/ui/` (shadcn-style, see D-15). `globals.css` maps shadcn's semantic names onto the notebook palette, so use `bg-primary`, `bg-accent`, `text-muted-foreground`, `bg-popover` and the like in components, and never hardcoded hex or `var(--…)`. Notebook roles (`bg-hl`, `text-good`, `text-lv-*`) stay as named tokens. Use `Button`, `Toggle`, `ToggleGroup`, `Select` and `CommandDialog` rather than raw `<button>`, `<select>`, or `<input type="checkbox">`.
 
 ## Writing content
 

@@ -2,11 +2,10 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { Command } from "cmdk";
-import { Search, X } from "lucide-react";
 import type { QuestionIndexEntry } from "@/lib/content/types";
 import { LevelPips } from "./level";
 import { qHref } from "@/lib/utils";
+import { CommandDialog, CommandEmpty, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 
 interface SearchIndex {
   tracks: { id: string; title: string; short: string }[];
@@ -71,14 +70,6 @@ function SearchDialog({ onClose }: { onClose: () => void }) {
   const index = useIndex();
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, []);
-
   const trackTitle = useMemo(() => new Map(index?.tracks.map((t) => [t.id, t.short]) ?? []), [index]);
 
   // cmdk filters on `value`; keep it to title + tags + track for relevance.
@@ -86,53 +77,34 @@ function SearchDialog({ onClose }: { onClose: () => void }) {
   const shown = query.trim() ? items : items.slice(0, 0);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-ink/30 p-0 backdrop-blur-[2px] sm:p-4 sm:pt-[12vh]" onClick={onClose}>
-      <div
-        className="flex h-full w-full flex-col overflow-hidden bg-surface shadow-2xl sm:h-auto sm:max-h-[70vh] sm:max-w-xl sm:rounded-xl sm:border sm:border-line"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <Command label="Search questions" className="flex min-h-0 flex-1 flex-col" onKeyDown={(e) => e.key === "Escape" && onClose()}>
-          <div className="flex items-center gap-2 border-b border-line px-4">
-            <Search className="h-4 w-4 shrink-0 text-ink-3" aria-hidden />
-            <Command.Input
-              autoFocus
-              value={query}
-              onValueChange={setQuery}
-              placeholder="Search questions, topics, tags…"
-              className="h-14 w-full bg-transparent text-[16px] outline-none placeholder:text-ink-3"
-            />
-            <button onClick={onClose} className="rounded-md p-1.5 text-ink-3 hover:bg-sunken" aria-label="Close search">
-              <X className="h-4 w-4" />
-            </button>
+    <CommandDialog open onOpenChange={(open) => !open && onClose()} title="Search questions" description="Search questions by title, topic or tag.">
+      <CommandInput autoFocus value={query} onValueChange={setQuery} placeholder="Search questions, topics, tags…" />
+      <CommandList>
+        {!index && <div className="px-3 py-6 text-[14px] text-ink-3">Loading questions…</div>}
+        {index && !query.trim() && (
+          <div className="px-3 py-6 text-[14px] text-ink-3">
+            Type to search {items.length} questions. Try “closure”, “hydration” or “zustand”.
           </div>
-          <Command.List className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2">
-            {!index && <div className="px-3 py-6 text-sm text-ink-3">Loading questions…</div>}
-            {index && !query.trim() && (
-              <div className="px-3 py-6 text-sm text-ink-3">
-                Type to search {items.length} questions. Try “closure”, “hydration” or “zustand”.
-              </div>
-            )}
-            {index && query.trim() && <Command.Empty className="px-3 py-6 text-sm text-ink-3">No questions match “{query}”.</Command.Empty>}
-            {shown.map((q) => (
-              <Command.Item
-                key={q.id}
-                value={`${q.title} ${q.tags.join(" ")} ${trackTitle.get(q.track) ?? ""} ${q.id}`}
-                onSelect={() => {
-                  onClose();
-                  router.push(qHref(q.id));
-                }}
-                className="flex cursor-pointer flex-col gap-1 rounded-lg px-3 py-2.5 data-[selected=true]:bg-blue-soft"
-              >
-                <span className="text-[15px] leading-snug text-ink">{q.title}</span>
-                <span className="flex items-center gap-2 text-[12px] text-ink-3">
-                  <span>{trackTitle.get(q.track)}</span>
-                  <LevelPips level={q.level} />
-                </span>
-              </Command.Item>
-            ))}
-          </Command.List>
-        </Command>
-      </div>
-    </div>
+        )}
+        {index && query.trim() && <CommandEmpty>No questions match “{query}”.</CommandEmpty>}
+        {shown.map((q) => (
+          <CommandItem
+            key={q.id}
+            value={`${q.title} ${q.tags.join(" ")} ${trackTitle.get(q.track) ?? ""} ${q.id}`}
+            onSelect={() => {
+              onClose();
+              router.push(qHref(q.id));
+            }}
+            className="flex-col items-start gap-1"
+          >
+            <span className="text-[15px] leading-snug text-ink">{q.title}</span>
+            <span className="flex items-center gap-2 text-[12px] text-ink-3">
+              <span>{trackTitle.get(q.track)}</span>
+              <LevelPips level={q.level} />
+            </span>
+          </CommandItem>
+        ))}
+      </CommandList>
+    </CommandDialog>
   );
 }

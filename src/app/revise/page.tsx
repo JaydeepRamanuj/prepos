@@ -22,7 +22,7 @@ export default function RevisePage() {
         {tracks.map((t) => (
           <li key={t.meta.id}>
             <Link href={`/revise/${t.meta.id}`} className="flex items-center gap-3.5 px-4 py-3.5 hover:bg-sunken/60">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-soft text-blue">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
                 <TrackIcon name={t.meta.icon} className="h-[18px] w-[18px]" />
               </span>
               <span className="min-w-0 flex-1">

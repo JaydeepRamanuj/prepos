@@ -30,7 +30,7 @@ export default async function TrackPage({ params }: PageProps<"/tracks/[track]">
   return (
     <div className="pt-8 md:pt-12">
       <div className="flex items-center gap-3">
-        <span className="grid h-11 w-11 place-items-center rounded-xl bg-blue-soft text-blue">
+        <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-primary">
           <TrackIcon name={meta.icon} className="h-5 w-5" />
         </span>
         <h1 className="font-serif text-[28px] font-semibold leading-tight tracking-tight md:text-[36px]">{meta.title}</h1>

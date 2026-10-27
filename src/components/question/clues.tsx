@@ -2,6 +2,7 @@
 
 import { Children, useEffect, useState, type ReactNode } from "react";
 import { Lightbulb } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Clues({ id, children }: { id: string; children: ReactNode }) {
   const clues = Children.toArray(children);
@@ -12,16 +13,13 @@ export function Clues({ id, children }: { id: string; children: ReactNode }) {
     <section className="mt-7 rounded-xl border border-dashed border-line-strong p-4" aria-label="Clues">
       <div className="flex items-center justify-between gap-3">
         <span className="flex items-center gap-2 text-[14px] font-medium">
-          <Lightbulb className="h-4 w-4 text-[var(--lv-hard)]" aria-hidden />
+          <Lightbulb className="text-lv-hard" aria-hidden />
           {shown === 0 ? "Stuck? Take a clue." : `Clue ${shown} of ${clues.length}`}
         </span>
         {shown < clues.length && (
-          <button
-            onClick={() => setShown((n) => n + 1)}
-            className="rounded-full border border-line bg-surface px-3 py-1 text-[13px] text-ink-2 hover:border-line-strong"
-          >
+          <Button variant="outline" size="sm" onClick={() => setShown((n) => n + 1)} className="rounded-full">
             {shown === 0 ? "Show first clue" : "Next clue"}
-          </button>
+          </Button>
         )}
       </div>
       {shown > 0 && (

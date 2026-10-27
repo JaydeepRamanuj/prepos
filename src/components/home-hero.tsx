@@ -6,6 +6,8 @@ import { useProgress } from "@/lib/progress/store";
 import { useAuth } from "@/lib/progress/sync";
 import { useSolvedCount, ProgressBar } from "./progress";
 import { qHref } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export function HomeHero({ allIds, trackCount, coreCount }: { allIds: string[]; trackCount: number; coreCount: number }) {
   const solved = useSolvedCount(allIds);
@@ -34,33 +36,41 @@ export function HomeHero({ allIds, trackCount, coreCount }: { allIds: string[]; 
 
       <div className="mt-6 flex flex-wrap gap-2.5">
         {hydrated && last ? (
-          <Link href={qHref(last.id)} className="group flex max-w-full items-center gap-3 rounded-xl bg-blue px-4 py-3 text-surface">
-            <span className="min-w-0">
-              <span className="block text-[12px] opacity-80">Continue where you left off</span>
-              <span className="block truncate text-[15px] font-medium">{last.title}</span>
-            </span>
-            <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
-          </Link>
+          <Button asChild className="group h-auto max-w-full rounded-xl px-4 py-3">
+            <Link href={qHref(last.id)}>
+              <span className="min-w-0 text-left">
+                <span className="block text-[12px] opacity-80">Continue where you left off</span>
+                <span className="block truncate text-[15px] font-medium">{last.title}</span>
+              </span>
+              <ArrowRight className="transition-transform group-hover:translate-x-0.5" aria-hidden />
+            </Link>
+          </Button>
         ) : (
-          <Link href="/tracks/javascript" className="flex items-center gap-2 rounded-xl bg-blue px-4 py-3 text-[15px] font-medium text-surface">
-            Start with JavaScript <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+          <Button asChild className="h-auto rounded-xl px-4 py-3 text-[15px] font-medium">
+            <Link href="/tracks/javascript">
+              Start with JavaScript <ArrowRight aria-hidden />
+            </Link>
+          </Button>
         )}
-        <Link href="/revise" className="flex items-center gap-2 rounded-xl border border-line bg-surface px-4 py-3 text-[15px] hover:border-line-strong">
-          <Zap className="h-4 w-4 text-ink-3" aria-hidden /> Quick revise
-          {hydrated && reviseCount > 0 && <span className="rounded-full bg-hl-soft px-1.5 text-[12px] text-ink">{reviseCount}</span>}
-        </Link>
-        <Link href="/mock" className="flex items-center gap-2 rounded-xl border border-line bg-surface px-4 py-3 text-[15px] hover:border-line-strong">
-          <Shuffle className="h-4 w-4 text-ink-3" aria-hidden /> Mock round
-        </Link>
+        <Button asChild variant="outline" className="h-auto rounded-xl px-4 py-3 text-[15px]">
+          <Link href="/revise">
+            <Zap className="text-ink-3" aria-hidden /> Quick revise
+            {hydrated && reviseCount > 0 && <Badge variant="highlight" className="rounded-full px-1.5">{reviseCount}</Badge>}
+          </Link>
+        </Button>
+        <Button asChild variant="outline" className="h-auto rounded-xl px-4 py-3 text-[15px]">
+          <Link href="/mock">
+            <Shuffle className="text-ink-3" aria-hidden /> Mock round
+          </Link>
+        </Button>
       </div>
 
       {enabled && !loading && !user && (
         <p className="mt-5 text-[13.5px] text-ink-3">
           Progress is saved on this device.{" "}
-          <button onClick={signIn} className="font-medium text-blue underline underline-offset-2">
+          <Button variant="link" onClick={signIn} className="align-baseline text-[13.5px] font-medium text-primary underline underline-offset-2">
             Sign in with Google
-          </button>{" "}
+          </Button>{" "}
           to keep it across devices.
         </p>
       )}
