@@ -1,0 +1,26 @@
+{
+  "id": "browser-security",
+  "title": "Browser, Network & Security",
+  "short": "Web",
+  "description": "How the browser works, HTTP and caching, CORS, and frontend security.",
+  "icon": "shield",
+  "order": 12,
+  "group": "engineering",
+  "chapters": [
+    {
+      "id": "browser",
+      "title": "Browser Internals",
+      "description": "Rendering pipeline, events, storage options, service workers."
+    },
+    {
+      "id": "networking",
+      "title": "Networking & HTTP",
+      "description": "HTTP caching, CORS, HTTP/2 and HTTP/3, REST vs GraphQL, WebSockets/SSE."
+    },
+    {
+      "id": "security",
+      "title": "Frontend Security",
+      "description": "XSS, CSRF, CSP, cookie flags, token storage, supply chain."
+    }
+  ]
+}

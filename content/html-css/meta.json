@@ -1,0 +1,31 @@
+{
+  "id": "html-css",
+  "title": "HTML, CSS & Accessibility",
+  "short": "HTML/CSS",
+  "description": "Semantic HTML, accessibility, layout, the cascade, modern CSS and Tailwind.",
+  "icon": "layout",
+  "order": 5,
+  "group": "frontend",
+  "chapters": [
+    {
+      "id": "semantics-a11y",
+      "title": "Semantics & Accessibility",
+      "description": "Semantic elements, ARIA, focus management, keyboard support, forms."
+    },
+    {
+      "id": "layout",
+      "title": "Layout",
+      "description": "Box model, flexbox, grid, positioning, stacking contexts and z-index."
+    },
+    {
+      "id": "modern-css",
+      "title": "Cascade & Modern CSS",
+      "description": "Specificity, cascade layers, container queries, :has(), units, responsive design."
+    },
+    {
+      "id": "tailwind",
+      "title": "Tailwind CSS",
+      "description": "Utility-first trade-offs, Tailwind v4, theming and class merging."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "architecture",
+  "title": "Frontend Architecture",
+  "short": "Arch",
+  "description": "Folder structure, architectural patterns, design systems and the API layer — and why you choose one over another.",
+  "icon": "blocks",
+  "order": 10,
+  "group": "engineering",
+  "chapters": [
+    {
+      "id": "structure",
+      "title": "Project Structure",
+      "description": "Folder structures, feature-based vs layer-based, colocation, module boundaries."
+    },
+    {
+      "id": "patterns",
+      "title": "Architectural Patterns",
+      "description": "Feature-sliced design, monorepos, micro-frontends, rendering architecture choices."
+    },
+    {
+      "id": "design-systems",
+      "title": "Design Systems",
+      "description": "Tokens, component APIs, theming, documentation and versioning."
+    },
+    {
+      "id": "data-layer",
+      "title": "API & Data Layer",
+      "description": "API clients, error handling, typing API responses, caching strategy."
+    }
+  ]
+}

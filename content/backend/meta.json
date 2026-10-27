@@ -1,0 +1,26 @@
+{
+  "id": "backend",
+  "title": "Backend for Frontend Devs",
+  "short": "Backend",
+  "description": "Node, API design, auth and databases — enough to own the full stack in an interview.",
+  "icon": "server",
+  "order": 14,
+  "group": "engineering",
+  "chapters": [
+    {
+      "id": "node",
+      "title": "Node.js",
+      "description": "Event loop in Node, streams, modules, error handling."
+    },
+    {
+      "id": "api-auth",
+      "title": "APIs & Auth",
+      "description": "REST design, status codes, JWT vs sessions, OAuth/OIDC, rate limiting."
+    },
+    {
+      "id": "databases",
+      "title": "Databases & Caching",
+      "description": "SQL vs NoSQL, indexes, N+1, transactions, Redis caching."
+    }
+  ]
+}

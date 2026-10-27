@@ -1,0 +1,16 @@
+{
+  "id": "testing",
+  "title": "Testing",
+  "short": "Testing",
+  "description": "What to test and how — the testing knowledge interviewers expect even from frontend devs.",
+  "icon": "flask-conical",
+  "order": 13,
+  "group": "engineering",
+  "chapters": [
+    {
+      "id": "testing",
+      "title": "Testing Frontend Apps",
+      "description": "Test pyramid/trophy, unit vs integration vs E2E, Testing Library, mocking, Playwright."
+    }
+  ]
+}

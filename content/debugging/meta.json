@@ -1,0 +1,21 @@
+{
+  "id": "debugging",
+  "title": "Debugging",
+  "short": "Debug",
+  "description": "How you find and fix bugs — tools, method, and the classic frontend bugs.",
+  "icon": "bug",
+  "order": 8,
+  "group": "engineering",
+  "chapters": [
+    {
+      "id": "tools",
+      "title": "Tools & Method",
+      "description": "DevTools panels, React DevTools, network and performance profiling, a debugging method."
+    },
+    {
+      "id": "common-bugs",
+      "title": "Classic Bugs",
+      "description": "Race conditions, stale closures, memory leaks, CORS errors, hydration errors and more."
+    }
+  ]
+}

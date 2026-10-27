@@ -1,0 +1,51 @@
+{
+  "id": "nextjs",
+  "title": "Next.js",
+  "short": "Next",
+  "description": "App Router in depth: routing, rendering strategies, caching (old and Cache Components), Server Actions, proxy, optimization and deployment.",
+  "icon": "triangle",
+  "order": 3,
+  "group": "core",
+  "chapters": [
+    {
+      "id": "routing",
+      "title": "Routing & Layouts",
+      "description": "App Router files, layouts vs templates, route groups, dynamic, parallel and intercepting routes, loading/error/not-found."
+    },
+    {
+      "id": "rendering",
+      "title": "Rendering Strategies",
+      "description": "SSR, SSG, ISR, CSR, Server vs Client Components, hydration and streaming."
+    },
+    {
+      "id": "caching",
+      "title": "Caching & Revalidation",
+      "description": "Cache Components, use cache, cacheLife/cacheTag, revalidation, and how caching changed across versions."
+    },
+    {
+      "id": "data-mutations",
+      "title": "Data Fetching & Mutations",
+      "description": "Fetching in Server Components, Server Actions, forms, Route Handlers, revalidatePath/revalidateTag."
+    },
+    {
+      "id": "proxy-auth",
+      "title": "Proxy, Auth & Security",
+      "description": "proxy.ts (formerly middleware), cookies/headers, authentication patterns, data access layer, securing Server Actions."
+    },
+    {
+      "id": "optimization",
+      "title": "Optimization & SEO",
+      "description": "next/image, next/font, scripts, bundles, lazy loading, metadata, prefetching and partial prerendering."
+    },
+    {
+      "id": "deployment",
+      "title": "Config, Runtime & Deployment",
+      "description": "Env vars, Node vs Edge runtime, Turbopack, next.config, Vercel vs self-hosting."
+    },
+    {
+      "id": "scenarios",
+      "title": "Real-world Scenarios",
+      "description": "Hydration mismatches, stale data after mutation, slow pages, Pages-to-App migration and more."
+    }
+  ]
+}

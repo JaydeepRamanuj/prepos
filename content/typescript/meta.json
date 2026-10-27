@@ -1,0 +1,31 @@
+{
+  "id": "typescript",
+  "title": "TypeScript",
+  "short": "TS",
+  "description": "Type system essentials through advanced types, plus typing React the right way.",
+  "icon": "file-type",
+  "order": 4,
+  "group": "frontend",
+  "chapters": [
+    {
+      "id": "basics",
+      "title": "Type System Basics",
+      "description": "Types vs interfaces, unions, narrowing, any/unknown/never, type guards."
+    },
+    {
+      "id": "generics",
+      "title": "Generics",
+      "description": "Generic functions, constraints, defaults and real-world generic utilities."
+    },
+    {
+      "id": "advanced-types",
+      "title": "Advanced Types",
+      "description": "Utility types, mapped, conditional, infer, template literal types, satisfies."
+    },
+    {
+      "id": "ts-react",
+      "title": "TypeScript with React",
+      "description": "Typing props, events, refs, hooks, polymorphic and generic components."
+    }
+  ]
+}

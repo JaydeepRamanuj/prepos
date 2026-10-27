@@ -1,0 +1,21 @@
+{
+  "id": "scenarios",
+  "title": "Scenario-based",
+  "short": "Scenarios",
+  "description": "\"What would you do if…\" — realistic product and engineering situations.",
+  "icon": "messages-square",
+  "order": 9,
+  "group": "engineering",
+  "chapters": [
+    {
+      "id": "product",
+      "title": "Product & Feature Scenarios",
+      "description": "Building features under real constraints."
+    },
+    {
+      "id": "production",
+      "title": "Production & Team Scenarios",
+      "description": "Incidents, slow apps, legacy code, conflicting requirements."
+    }
+  ]
+}

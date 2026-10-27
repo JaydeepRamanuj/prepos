@@ -1,0 +1,31 @@
+{
+  "id": "state",
+  "title": "State Management & Libraries",
+  "short": "State",
+  "description": "Where state should live, Zustand, TanStack Query, and forms with React Hook Form + Zod.",
+  "icon": "database",
+  "order": 6,
+  "group": "frontend",
+  "chapters": [
+    {
+      "id": "fundamentals",
+      "title": "State Fundamentals",
+      "description": "Server vs client state, URL state, local vs global, choosing a tool."
+    },
+    {
+      "id": "zustand",
+      "title": "Zustand",
+      "description": "Stores, selectors, re-render control, middleware, persistence, slices."
+    },
+    {
+      "id": "tanstack-query",
+      "title": "TanStack Query",
+      "description": "Query keys, caching, staleTime vs gcTime, mutations, invalidation, optimistic updates."
+    },
+    {
+      "id": "forms",
+      "title": "Forms & Validation",
+      "description": "React Hook Form, Zod schemas, server validation and sharing schemas."
+    }
+  ]
+}

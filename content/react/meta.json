@@ -1,0 +1,56 @@
+{
+  "id": "react",
+  "title": "React",
+  "short": "React",
+  "description": "Rendering, hooks, patterns, performance and React 19 — including Server Components, Actions and the React Compiler.",
+  "icon": "atom",
+  "order": 2,
+  "group": "core",
+  "chapters": [
+    {
+      "id": "fundamentals",
+      "title": "Fundamentals",
+      "description": "JSX, components, props vs state, rendering, reconciliation and keys."
+    },
+    {
+      "id": "hooks-core",
+      "title": "Core Hooks",
+      "description": "useState, useEffect, useRef, useLayoutEffect, dependencies, cleanup and stale closures."
+    },
+    {
+      "id": "hooks-advanced",
+      "title": "Advanced Hooks",
+      "description": "useReducer, useContext, useMemo, useCallback, useId, useSyncExternalStore, useTransition, useDeferredValue and more."
+    },
+    {
+      "id": "custom-hooks",
+      "title": "Custom Hooks",
+      "description": "Design and write custom hooks from scratch."
+    },
+    {
+      "id": "rendering-performance",
+      "title": "Rendering & Performance",
+      "description": "Why components re-render, memoization, React Compiler, context performance, lists and profiling."
+    },
+    {
+      "id": "patterns",
+      "title": "Component Patterns",
+      "description": "Composition, compound components, render props, HOCs, controlled vs uncontrolled, portals, error boundaries, refs."
+    },
+    {
+      "id": "react-19",
+      "title": "React 19 & Server Components",
+      "description": "RSC mental model, server vs client, Actions, useActionState, useOptimistic, use(), Suspense and streaming."
+    },
+    {
+      "id": "data-forms",
+      "title": "Data Fetching & Forms",
+      "description": "Fetching patterns, race conditions, abort, forms and controlled inputs."
+    },
+    {
+      "id": "debug-output",
+      "title": "What Renders? Debug These",
+      "description": "Snippets: infinite loops, stale state, wrong keys, effect bugs."
+    }
+  ]
+}

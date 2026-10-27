@@ -1,0 +1,31 @@
+{
+  "id": "ai-engineering",
+  "title": "AI-assisted Engineering",
+  "short": "AI",
+  "description": "How you work with AI coding agents to ship consistent, high-quality code — context files, skills, hooks, guardrails and review.",
+  "icon": "sparkles",
+  "order": 15,
+  "group": "career",
+  "chapters": [
+    {
+      "id": "workflows",
+      "title": "Working with AI",
+      "description": "Planning vs executing, prompting for code, iterating, when not to use AI."
+    },
+    {
+      "id": "context",
+      "title": "Context Files, Rules & Skills",
+      "description": "AGENTS.md / CLAUDE.md, rules, skills, context management."
+    },
+    {
+      "id": "agents",
+      "title": "Agents, Hooks & Guardrails",
+      "description": "Subagents, hooks, handoff, permissions, MCP, guardrails."
+    },
+    {
+      "id": "quality",
+      "title": "Quality & Safety",
+      "description": "Deterministic tools as guardrails, reviewing AI code, security, measuring output."
+    }
+  ]
+}

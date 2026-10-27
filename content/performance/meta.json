@@ -1,0 +1,26 @@
+{
+  "id": "performance",
+  "title": "Performance & Optimization",
+  "short": "Perf",
+  "description": "Core Web Vitals, loading performance and runtime performance — measured, not guessed.",
+  "icon": "gauge",
+  "order": 7,
+  "group": "frontend",
+  "chapters": [
+    {
+      "id": "web-vitals",
+      "title": "Core Web Vitals",
+      "description": "LCP, INP, CLS, how they are measured, field vs lab data, fixing each."
+    },
+    {
+      "id": "loading",
+      "title": "Loading Performance",
+      "description": "Code splitting, bundle analysis, images, fonts, caching, critical rendering path."
+    },
+    {
+      "id": "runtime",
+      "title": "Runtime Performance",
+      "description": "Long tasks, layout thrashing, memory leaks, virtualization, web workers."
+    }
+  ]
+}

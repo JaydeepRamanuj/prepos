@@ -1,0 +1,56 @@
+{
+  "id": "javascript",
+  "title": "JavaScript",
+  "short": "JS",
+  "description": "The language under everything: scope, closures, this, prototypes, the event loop, async patterns and the polyfills interviewers love.",
+  "icon": "braces",
+  "order": 1,
+  "group": "core",
+  "chapters": [
+    {
+      "id": "fundamentals",
+      "title": "Fundamentals",
+      "description": "Types, coercion, equality, hoisting, TDZ and var/let/const."
+    },
+    {
+      "id": "scope-closures",
+      "title": "Scope & Closures",
+      "description": "Lexical scope, closures, IIFEs, module pattern and closure pitfalls."
+    },
+    {
+      "id": "this-prototypes",
+      "title": "this, Prototypes & Classes",
+      "description": "How this is bound, call/apply/bind, the prototype chain and classes."
+    },
+    {
+      "id": "async",
+      "title": "Async & the Event Loop",
+      "description": "Event loop, micro/macrotasks, promises, async/await, error handling, cancellation."
+    },
+    {
+      "id": "objects-arrays",
+      "title": "Objects, Arrays & Collections",
+      "description": "Copying, immutability, iteration, Map/Set/WeakMap, destructuring and spread."
+    },
+    {
+      "id": "functions",
+      "title": "Functions & Functional Patterns",
+      "description": "Higher-order functions, currying, composition, memoization, purity."
+    },
+    {
+      "id": "output-prediction",
+      "title": "Predict the Output",
+      "description": "Tricky snippets that test real understanding of the runtime."
+    },
+    {
+      "id": "polyfills",
+      "title": "Polyfills & Implementations",
+      "description": "Write bind, map, reduce, Promise.all, debounce, throttle, deep clone and more from memory."
+    },
+    {
+      "id": "modern-js",
+      "title": "Modern JavaScript",
+      "description": "ES modules, Proxy/Reflect, iterators, symbols and recent language additions."
+    }
+  ]
+}

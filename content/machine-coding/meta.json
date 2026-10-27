@@ -1,0 +1,21 @@
+{
+  "id": "machine-coding",
+  "title": "Machine Coding",
+  "short": "Build",
+  "description": "Build real UI components and features from scratch in React, the way machine-coding rounds expect.",
+  "icon": "code",
+  "order": 11,
+  "group": "engineering",
+  "chapters": [
+    {
+      "id": "components",
+      "title": "UI Components",
+      "description": "Modal, tabs, accordion, star rating, OTP input, toast, carousel and more."
+    },
+    {
+      "id": "features",
+      "title": "Features & Mini Apps",
+      "description": "Autocomplete, infinite scroll, data table, file tree, nested comments, form wizard and more."
+    }
+  ]
+}

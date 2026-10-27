@@ -1,0 +1,26 @@
+{
+  "id": "behavioural",
+  "title": "Behavioural",
+  "short": "HR",
+  "description": "STAR templates for the questions every company asks — shaped around a trainer-turned-developer story.",
+  "icon": "users",
+  "order": 16,
+  "group": "career",
+  "chapters": [
+    {
+      "id": "about-you",
+      "title": "About You & Motivation",
+      "description": "Introduce yourself, why switch, why us, career goals."
+    },
+    {
+      "id": "teamwork",
+      "title": "Teamwork & Conflict",
+      "description": "Disagreements, feedback, mentoring, collaboration."
+    },
+    {
+      "id": "ownership",
+      "title": "Ownership & Growth",
+      "description": "Failures, pressure, ownership, learning fast."
+    }
+  ]
+}
