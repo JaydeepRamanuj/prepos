@@ -105,8 +105,8 @@ body {
     var(--hl) calc(100% - 0.25em),
     transparent calc(100% - 0.2em)
   );
-  background-size: 100% 0.55em;
-  background-position: 0 88%;
+  background-size: 100% 0.32em;
+  background-position: 0 96%;
   background-repeat: no-repeat;
 }
 

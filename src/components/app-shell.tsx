@@ -29,7 +29,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <Link href="/" className="mr-2 flex items-center gap-2 font-serif text-[19px] font-semibold tracking-tight">
             <Logo />
             <span>
-              prep<span className="hl-mark">os</span>
+              prepos
             </span>
           </Link>
           <nav className="hidden items-center gap-0.5 md:flex" aria-label="Main">

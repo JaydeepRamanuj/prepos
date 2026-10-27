@@ -17,7 +17,7 @@ export function ProgressBar({ value, total, className }: { value: number; total:
   const pct = total ? Math.round((value / total) * 100) : 0;
   return (
     <div
-      className={cn("h-1.5 w-full overflow-hidden rounded-full bg-sunken", className)}
+      className={cn("h-1.5 w-full overflow-hidden rounded-full bg-line", className)}
       role="progressbar"
       aria-valuemin={0}
       aria-valuemax={total}

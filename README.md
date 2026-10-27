@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PrepOS
 
-## Getting Started
+Frontend interview prep: questions with interview-ready answers, deep explanations, clues, quick revise and mock rounds. Content is static Markdown in `content/`; only user progress lives in Firebase.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
+cp .env.example .env.local   # fill in the Firebase web config (optional)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Without Firebase env vars the app still works and saves progress in the browser only.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Firebase setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Firebase console → create a project.
+2. **Authentication** → Sign-in method → enable **Google**. Under Settings → Authorized domains, add your Vercel domain(s).
+3. **Firestore Database** → create a database (production mode).
+4. **Firestore → Rules** → paste the contents of [`firestore.rules`](./firestore.rules) and publish.
+5. Project settings → Your apps → add a **Web app** → copy the config values into the six `NEXT_PUBLIC_FIREBASE_*` variables (locally in `.env.local`, on Vercel under Project → Settings → Environment Variables), then redeploy.
 
-## Learn More
+Progress is stored in one document per user: `users/{uid}`.
 
-To learn more about Next.js, take a look at the following resources:
+## Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Format and quality bar: [`docs/CONTENT_GUIDE.md`](./docs/CONTENT_GUIDE.md)
+- Track and chapter plan with target counts: [`docs/CONTENT_PLAN.md`](./docs/CONTENT_PLAN.md)
+- Validate everything (also prints counts per chapter): `npm run validate` · one track: `npm run validate -- react`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add a question by creating `content/<track>/<chapter>/<NN>-<slug>.md`; it appears in the app on the next build.
