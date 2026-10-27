@@ -62,11 +62,11 @@ Work one track or chapter at a time. Don't spawn many parallel subagents — the
 
 ## Status (Oct 2026)
 
-App complete; production build passes. Content: 146 of 443 planned questions.
+App complete; production build passes. Content: 185 of 443 planned questions.
 
 | Track | Done / target | Missing chapters |
 |---|---|---|
-| javascript | 36 / 75 | objects-arrays, modern-js; most of scope-closures, this-prototypes, output-prediction, polyfills |
+| javascript | 75 / 75 | complete |
 | react | 25 / 75 | hooks-advanced, custom-hooks, patterns, react-19, data-forms, debug-output; rest of hooks-core |
 | nextjs | 12 / 72 | rendering, caching, proxy-auth, optimization, deployment, scenarios; rest of routing, data-mutations |
 | typescript, html-css, performance, scenarios, testing | 0 | all |
