@@ -8,51 +8,51 @@
 
 /* ---------- Tokens: a study notebook — cool paper, ink, highlighter ---------- */
 :root {
-  --paper: #f5f6f8;
+  --paper: #f7f7fb;
   --surface: #ffffff;
-  --sunken: #eef0f4;
-  --ink: #172033;
-  --ink-2: #4b556a;
-  --ink-3: #7a8397;
-  --line: #e1e5ec;
-  --line-strong: #c9cfda;
-  --blue: #2445c9;
-  --blue-soft: #e7ecff;
+  --sunken: #efeff6;
+  --ink: #14142b;
+  --ink-2: #53536e;
+  --ink-3: #8a8aa3;
+  --line: #e4e4ef;
+  --line-strong: #cdcde0;
+  --blue: #5b4de8;
+  --blue-soft: #ecebff;
   --hl: #ffe45c;
-  --hl-soft: #fff6c2;
+  --hl-soft: #fff4bd;
   --hl-ink: #2d2600;
-  --good: #23855c;
-  --good-soft: #e3f4ec;
-  --code-bg: #f3f5f9;
+  --good: #14946a;
+  --good-soft: #dcf5ea;
+  --code-bg: #f4f4fa;
 
-  --lv-easy: #23855c;
-  --lv-medium: #2a6fd6;
-  --lv-hard: #c8711a;
-  --lv-advanced: #a3337f;
+  --lv-easy: #14946a;
+  --lv-medium: #3b82f6;
+  --lv-hard: #e0801f;
+  --lv-advanced: #c2409a;
 }
 
 .dark {
-  --paper: #0e1424;
-  --surface: #151c2f;
-  --sunken: #111829;
-  --ink: #e5e8f1;
-  --ink-2: #a3abbf;
-  --ink-3: #737d95;
-  --line: #242d45;
-  --line-strong: #34405f;
-  --blue: #93a9ff;
-  --blue-soft: #1c2747;
-  --hl: #e6cd48;
+  --paper: #0b0b14;
+  --surface: #14141f;
+  --sunken: #10101a;
+  --ink: #ececf7;
+  --ink-2: #a6a6c0;
+  --ink-3: #6f6f8c;
+  --line: #23233a;
+  --line-strong: #34344f;
+  --blue: #8f86ff;
+  --blue-soft: #1d1b3d;
+  --hl: #f0d84a;
   --hl-soft: #3a3418;
   --hl-ink: #1a1600;
-  --good: #5fcf9c;
-  --good-soft: #15302a;
-  --code-bg: #0f1526;
+  --good: #4fd1a0;
+  --good-soft: #12302a;
+  --code-bg: #0e0e19;
 
-  --lv-easy: #5fcf9c;
-  --lv-medium: #7aa8ff;
-  --lv-hard: #f0a457;
-  --lv-advanced: #e27cc2;
+  --lv-easy: #4fd1a0;
+  --lv-medium: #6aa6ff;
+  --lv-hard: #f2a65a;
+  --lv-advanced: #e87fc6;
 }
 
 /* shadcn/ui semantic tokens. They alias the notebook palette above, so every

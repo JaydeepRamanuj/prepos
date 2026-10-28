@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
+  <defs><filter id="s" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1a1a40" flood-opacity="0.5"/></filter></defs>
+  <rect width="960" height="600" fill="#0b0b14"/>
+  <rect width="960" height="56" fill="#0b0b14"/><line x1="0" x2="960" y1="56" y2="56" stroke="#23233a"/>
+  <rect x="24" y="16" width="24" height="24" rx="7" fill="#8f86ff"/><rect x="30" y="33" width="12" height="3" rx="1.5" fill="#f0d84a"/>
+  <path d="M31 24h5a2.6 2.6 0 0 1 0 5.2h-2.8V32" stroke="#0b0b14" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="58" y="35" font-family="Literata, Georgia, serif" font-size="19" font-weight="600" fill="#ececf7">prepos</text>
+  <rect x="150" y="14" width="56" height="28" rx="8" fill="#10101a"/><text x="162" y="33" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="13.5" font-weight="500" fill="#ececf7">Home</text>
+  <text x="226" y="33" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="13.5" fill="#a6a6c0">Tracks</text><text x="290" y="33" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="13.5" fill="#a6a6c0">Revise</text><text x="354" y="33" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="13.5" fill="#a6a6c0">Mock</text><text x="418" y="33" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="13.5" fill="#a6a6c0">Saved</text>
+  <rect x="690" y="12" width="210" height="32" rx="10" fill="#14141f" stroke="#23233a"/><text x="728" y="33" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="13" fill="#6f6f8c">Search</text><text x="866" y="33" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="11" fill="#6f6f8c">⌘K</text>
+  <circle cx="926" cy="28" r="14" fill="#10101a" stroke="#23233a"/>
+
+  <text x="40" y="118" font-family="Literata, Georgia, serif" font-size="34" font-weight="600" fill="#ececf7">443 questions between you</text>
+  <rect x="140" y="152" width="236" height="9" rx="4" fill="#f0d84a" opacity="0.9"/>
+  <text x="40" y="160" font-family="Literata, Georgia, serif" font-size="34" font-weight="600" fill="#ececf7">and the next interview.</text>
+  <text x="40" y="190" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" fill="#a6a6c0">Try each question before revealing the answer. Pick a track, or run a mock round.</text>
+  <rect x="40" y="214" width="420" height="8" rx="4" fill="#10101a"/><rect x="40" y="214" width="150" height="8" rx="4" fill="#8f86ff"/>
+  <g filter="url(#s)"><rect x="40" y="244" width="190" height="44" rx="12" fill="#8f86ff"/></g>
+  <text x="62" y="271" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" font-weight="600" fill="#0b0b14">Start with JavaScript  →</text>
+  <rect x="242" y="244" width="130" height="44" rx="12" fill="#14141f" stroke="#23233a"/><text x="262" y="271" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" fill="#a6a6c0">⚡ Quick revise</text>
+  <rect x="384" y="244" width="130" height="44" rx="12" fill="#14141f" stroke="#23233a"/><text x="404" y="271" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" fill="#a6a6c0">⇄ Mock round</text>
+
+  <g filter="url(#s)"><rect x="40" y="318" width="480" height="250" rx="16" fill="#14141f" stroke="#23233a"/></g>
+  
+    <line x1="40" x2="520" y1="340" y2="340" stroke="#23233a"/>
+    <circle cx="62" cy="364" r="10" fill="#4fd1a0"/><path d="M57 364l4 4 7-8" stroke="#14141f" stroke-width="2.4" fill="none"/>
+    <text x="86" y="360" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" fill="#a6a6c0">How does the event loop schedule tasks?</text>
+    <circle cx="91" cy="378" r="3.5" fill="#4fd1a0" stroke="#4fd1a0" stroke-width="1.2"/><circle cx="102" cy="378" r="3.5" fill="none" stroke="#4fd1a0" stroke-width="1.2"/><circle cx="113" cy="378" r="3.5" fill="none" stroke="#4fd1a0" stroke-width="1.2"/><circle cx="124" cy="378" r="3.5" fill="none" stroke="#4fd1a0" stroke-width="1.2"/><text x="140" y="382" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#4fd1a0">Easy</text>
+    
+  
+    <line x1="40" x2="520" y1="394" y2="394" stroke="#23233a"/>
+    <circle cx="62" cy="418" r="10" fill="none" stroke="#23233a" stroke-width="1.6"/>
+    <text x="86" y="414" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" fill="#ececf7">Explain closures with a real example</text>
+    <circle cx="91" cy="432" r="3.5" fill="#6aa6ff" stroke="#6aa6ff" stroke-width="1.2"/><circle cx="102" cy="432" r="3.5" fill="#6aa6ff" stroke="#6aa6ff" stroke-width="1.2"/><circle cx="113" cy="432" r="3.5" fill="none" stroke="#6aa6ff" stroke-width="1.2"/><circle cx="124" cy="432" r="3.5" fill="none" stroke="#6aa6ff" stroke-width="1.2"/><text x="140" y="436" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#6aa6ff">Medium</text>
+    <rect x="196" y="423" width="52" height="19" rx="6" fill="#3a3418"/><text x="204" y="436.5" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="11.5" fill="#ececf7">Revise</text>
+  
+    <line x1="40" x2="520" y1="448" y2="448" stroke="#23233a"/>
+    <circle cx="62" cy="472" r="10" fill="none" stroke="#23233a" stroke-width="1.6"/>
+    <text x="86" y="468" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" fill="#ececf7">When does useEffect cleanup run?</text>
+    <circle cx="91" cy="486" r="3.5" fill="#f2a65a" stroke="#f2a65a" stroke-width="1.2"/><circle cx="102" cy="486" r="3.5" fill="#f2a65a" stroke="#f2a65a" stroke-width="1.2"/><circle cx="113" cy="486" r="3.5" fill="#f2a65a" stroke="#f2a65a" stroke-width="1.2"/><circle cx="124" cy="486" r="3.5" fill="none" stroke="#f2a65a" stroke-width="1.2"/><text x="140" y="490" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2a65a">Hard</text>
+    
+  
+    <line x1="40" x2="520" y1="502" y2="502" stroke="#23233a"/>
+    <circle cx="62" cy="526" r="10" fill="none" stroke="#23233a" stroke-width="1.6"/>
+    <text x="86" y="522" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" fill="#ececf7">Design a concurrent-safe data fetcher</text>
+    <circle cx="91" cy="540" r="3.5" fill="#e87fc6" stroke="#e87fc6" stroke-width="1.2"/><circle cx="102" cy="540" r="3.5" fill="#e87fc6" stroke="#e87fc6" stroke-width="1.2"/><circle cx="113" cy="540" r="3.5" fill="#e87fc6" stroke="#e87fc6" stroke-width="1.2"/><circle cx="124" cy="540" r="3.5" fill="#e87fc6" stroke="#e87fc6" stroke-width="1.2"/><text x="140" y="544" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#e87fc6">Advanced</text>
+    
+
+  <g filter="url(#s)"><rect x="560" y="318" width="360" height="250" rx="16" fill="#14141f" stroke="#23233a"/></g>
+  <text x="740" y="372" text-anchor="middle" font-family="Literata, Georgia, serif" font-size="18" fill="#ececf7">Answer it out loud first.</text>
+  <text x="740" y="396" text-anchor="middle" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12.5" fill="#a6a6c0">Say your 30-second answer, then compare.</text>
+  <rect x="656" y="418" width="168" height="44" rx="12" fill="#f0d84a"/><text x="740" y="445" text-anchor="middle" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="14.5" font-weight="700" fill="#1a1600">Reveal answer</text>
+  <rect x="588" y="490" width="62" height="24" rx="12" fill="#12302a"/><text x="619" y="506" text-anchor="middle" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#4fd1a0">Solved</text>
+  <rect x="660" y="490" width="62" height="24" rx="12" fill="#1d1b3d"/><text x="691" y="506" text-anchor="middle" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#8f86ff">Saved</text>
+  <rect x="732" y="490" width="62" height="24" rx="12" fill="#3a3418"/><text x="763" y="506" text-anchor="middle" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#ececf7">Revise</text>
+  <rect x="588" y="530" width="40" height="22" rx="6" fill="#0b0b14" stroke="#23233a"/><rect x="640" y="530" width="40" height="22" rx="6" fill="#14141f" stroke="#23233a"/><rect x="692" y="530" width="40" height="22" rx="6" fill="#8f86ff" stroke="#23233a"/><rect x="744" y="530" width="40" height="22" rx="6" fill="#1d1b3d" stroke="#23233a"/><rect x="796" y="530" width="40" height="22" rx="6" fill="#f0d84a" stroke="#23233a"/><rect x="848" y="530" width="40" height="22" rx="6" fill="#4fd1a0" stroke="#23233a"/>
+  <text x="40" y="590" font-family="Instrument Sans, Inter, system-ui, sans-serif" font-size="11" fill="#6f6f8c">dark — Indigo Ink · primary #8f86ff · paper #0b0b14 · radius 12–16px</text>
+</svg>
