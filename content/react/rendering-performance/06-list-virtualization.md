@@ -3,7 +3,7 @@ title: "How would you render a list of 10,000 rows without freezing the page?"
 level: hard
 type: implement
 tags: [virtualization, windowing, lists, performance, scroll]
-related: [react/react-memo-new-props, react/react-profiler, performance/virtualization]
+related: [react/react-memo-new-props, react/react-profiler, performance/list-virtualization]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "Explain the browser rendering pipeline. What triggers layout, paint and 
 level: hard
 type: concept
 tags: [rendering, layout, paint, composite, reflow, cssom]
-related: [browser-security/what-happens-when-you-type-a-url, performance/layout-thrashing, performance/inp]
+related: [browser-security/what-happens-when-you-type-a-url, performance/layout-thrashing, performance/inp-fixes]
 ---
 
 ## Question

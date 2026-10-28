@@ -3,7 +3,7 @@ title: "How do React.lazy and Suspense split your bundle, and where should you s
 level: medium
 type: implement
 tags: [code-splitting, lazy, suspense, bundle, dynamic-import]
-related: [react/suspense-streaming, react/error-boundaries, performance/code-splitting]
+related: [react/suspense-streaming, react/error-boundaries]
 ---
 
 ## Question

@@ -3,7 +3,7 @@ title: "Typing in a form is laggy. How do you find the cause with the React Prof
 level: medium
 type: scenario
 tags: [profiler, react-devtools, performance, debugging]
-related: [react/why-component-rerenders, react/state-colocation, react/react-memo-new-props, performance/inp]
+related: [react/why-component-rerenders, react/state-colocation, react/react-memo-new-props, performance/inp-fixes]
 ---
 
 ## Question

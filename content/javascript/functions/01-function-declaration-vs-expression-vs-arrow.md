@@ -3,7 +3,7 @@ title: "Function declarations vs function expressions vs arrow functions — wha
 level: easy
 type: concept
 tags: [functions, arrow-functions, hoisting, this]
-related: [javascript/this-binding-rules, javascript/hoisting-tdz-output, javascript/higher-order-functions]
+related: [javascript/this-binding-rules, javascript/hoisting-function-var-output, javascript/higher-order-functions]
 ---
 
 ## Question

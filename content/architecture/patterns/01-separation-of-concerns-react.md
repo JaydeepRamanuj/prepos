@@ -3,7 +3,7 @@ title: "How do you separate logic from UI in React today? Is container/presentat
 level: easy
 type: concept
 tags: [separation-of-concerns, custom-hooks, container-presentational, server-components]
-related: [architecture/feature-vs-layer-folders, architecture/api-client-layer, testing/testing-custom-hooks]
+related: [architecture/feature-vs-layer-folders, architecture/api-client-layer, testing/testing-hooks-async-ui]
 ---
 
 ## Question

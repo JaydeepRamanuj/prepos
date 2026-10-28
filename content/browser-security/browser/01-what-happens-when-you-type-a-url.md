@@ -3,7 +3,7 @@ title: "What happens when you type a URL into the browser and press Enter?"
 level: medium
 type: concept
 tags: [dns, tcp, tls, http, rendering, navigation]
-related: [browser-security/rendering-pipeline, browser-security/script-async-defer-module, browser-security/http-versions, browser-security/http-caching-headers]
+related: [browser-security/rendering-pipeline, browser-security/script-async-defer-module, browser-security/http-versions, browser-security/http-caching]
 ---
 
 ## Question

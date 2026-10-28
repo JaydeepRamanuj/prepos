@@ -3,7 +3,7 @@ title: "useLayoutEffect vs useEffect — when do you need the layout version?"
 level: medium
 type: concept
 tags: [useLayoutEffect, useEffect, layout, flicker, ssr]
-related: [react/render-and-commit, react/use-effect-when-it-runs, react/use-insertion-effect]
+related: [react/render-and-commit, react/use-effect-when-it-runs]
 ---
 
 ## Question

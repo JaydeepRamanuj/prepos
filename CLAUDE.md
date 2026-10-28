@@ -62,20 +62,24 @@ Work one track or chapter at a time. Don't spawn many parallel subagents — the
 
 ## Status (Oct 2026)
 
-App complete; production build passes. Content: 134 of 443 planned questions.
+App complete; production build passes. Content: all 443 planned questions written.
 
 | Track | Done / target | Missing chapters |
 |---|---|---|
-| javascript | 24 / 75 | async, objects-arrays, modern-js; most of scope-closures, this-prototypes, output-prediction, polyfills |
-| react | 25 / 75 | hooks-advanced, custom-hooks, patterns, react-19, data-forms, debug-output; rest of hooks-core |
-| nextjs | 12 / 72 | rendering, caching, proxy-auth, optimization, deployment, scenarios; rest of routing, data-mutations |
-| typescript, html-css, performance, scenarios, testing | 0 | all |
-| state | 7 / 20 | tanstack-query, forms; rest of zustand |
-| architecture | 10 / 18 | design-systems, data-layer |
-| machine-coding | 9 / 20 | features; one component |
-| browser-security | 6 / 16 | networking, security |
-| backend | 4 / 14 | api-auth, databases |
-| ai-engineering | 10 / 20 | agents, quality |
+| javascript | 75 / 75 | complete |
+| react | 75 / 75 | complete |
+| nextjs | 72 / 72 | complete |
+| typescript | 20 / 20 | complete |
+| html-css | 20 / 20 | complete |
+| performance | 18 / 18 | complete |
+| testing | 10 / 10 | complete |
+| scenarios | 18 / 18 | complete |
+| state | 20 / 20 | complete |
+| architecture | 18 / 18 | complete |
+| machine-coding | 20 / 20 | complete |
+| browser-security | 16 / 16 | complete |
+| backend | 14 / 14 | complete |
+| ai-engineering | 20 / 20 | complete |
 | debugging, behavioural | complete | — |
 
 Run `npm run validate` for exact live counts — update this table when a track is finished.

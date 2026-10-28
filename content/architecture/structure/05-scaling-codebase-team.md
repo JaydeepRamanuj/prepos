@@ -3,7 +3,7 @@ title: "Your codebase is growing from 1 to 10 developers — what do you change?
 level: advanced
 type: scenario
 tags: [scaling, team, code-ownership, conventions, ci, architecture]
-related: [architecture/import-boundaries, architecture/monorepo-when-worth-it, architecture/feature-sliced-design, testing/tests-as-ai-guardrails]
+related: [architecture/import-boundaries, architecture/monorepo-when-worth-it, architecture/feature-sliced-design, ai-engineering/deterministic-guardrails]
 ---
 
 ## Question

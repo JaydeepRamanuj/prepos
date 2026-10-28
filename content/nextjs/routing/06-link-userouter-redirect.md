@@ -3,7 +3,7 @@ title: "Link vs useRouter vs redirect(): which navigation API do you use where?"
 level: medium
 type: concept
 tags: [link, use-router, redirect, navigation, prefetching]
-related: [nextjs/loading-error-not-found, nextjs/prefetching-and-router-cache, nextjs/server-actions-basics]
+related: [nextjs/loading-error-not-found, nextjs/prefetching-and-router-cache, nextjs/how-server-actions-work]
 ---
 
 ## Question
