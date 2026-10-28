@@ -12,6 +12,7 @@ import { qHref } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Toggle } from "@/components/ui/toggle";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface Card {
   id: string;
@@ -47,11 +48,16 @@ export function ReviseFeed({ trackTitle, trackId, cards }: { trackTitle: string;
   return (
     <div className="-mx-4 flex h-[calc(100dvh-3.5rem)] flex-col">
       <div className="flex items-center gap-2 border-b border-line px-4 py-2">
-        <Button asChild variant="ghost" size="icon-sm" aria-label="Back to Quick revise">
-          <Link href="/revise">
-            <ChevronLeft className="size-5" />
-          </Link>
-        </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button asChild variant="ghost" size="icon-sm" aria-label="Back to Quick revise">
+              <Link href="/revise">
+                <ChevronLeft className="size-5" />
+              </Link>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>Back to Quick revise</TooltipContent>
+        </Tooltip>
         <span className="min-w-0 flex-1 truncate text-[14.5px] font-medium">{trackTitle}</span>
         <Select value={filter} onValueChange={(v) => setFilter(v as Filter)}>
           <SelectTrigger aria-label="Which answers" className="h-8 rounded-full px-3 text-[13px]">
@@ -63,7 +69,7 @@ export function ReviseFeed({ trackTitle, trackId, cards }: { trackTitle: string;
             <SelectItem value="revise">Revision list</SelectItem>
           </SelectContent>
         </Select>
-        <Button variant="outline" size="sm" onClick={() => setShuffleSeed((s) => s + 1)} className="rounded-full">
+        <Button variant="outline" size="sm" shape="pill" onClick={() => setShuffleSeed((s) => s + 1)}>
           Shuffle
         </Button>
       </div>
@@ -100,17 +106,19 @@ export function ReviseFeed({ trackTitle, trackId, cards }: { trackTitle: string;
                   <div className="mt-6 flex flex-wrap items-center gap-2">
                     <Toggle
                       variant="outline"
+                      shape="pill"
                       pressed={isSolved}
                       onPressedChange={() => toggle("solved", k)}
-                      className="rounded-full data-[state=on]:border-good data-[state=on]:bg-good data-[state=on]:text-surface"
+                      className="data-[state=on]:border-good data-[state=on]:bg-good data-[state=on]:text-surface"
                     >
                       <Check aria-hidden /> {isSolved ? "Solved" : "Got it"}
                     </Toggle>
                     <Toggle
                       variant="outline"
+                      shape="pill"
                       pressed={inRevise}
                       onPressedChange={() => toggle("revise", k)}
-                      className="rounded-full data-[state=on]:border-hl data-[state=on]:bg-hl data-[state=on]:text-hl-ink"
+                      className="data-[state=on]:border-hl data-[state=on]:bg-hl data-[state=on]:text-hl-ink"
                     >
                       <RotateCcw aria-hidden /> {inRevise ? "In revision list" : "Revise later"}
                     </Toggle>

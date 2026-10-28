@@ -6,6 +6,9 @@ import { Bookmark, Check, CheckCircle2, Circle, RotateCcw } from "lucide-react";
 import { LEVELS, LEVEL_LABEL, QUESTION_TYPES, TYPE_LABEL, toKey, type Level, type QuestionIndexEntry, type QuestionType, type TrackMeta } from "@/lib/content/types";
 import { useProgress } from "@/lib/progress/store";
 import { chapterKey, cn, qHref } from "@/lib/utils";
+import { ItemList, itemRowLinkClass } from "@/components/item-list";
+import { Empty, EmptyDescription, EmptyHeader } from "@/components/ui/empty";
+import { Toggle } from "@/components/ui/toggle";
 import { LevelPips, TypeChip } from "./level";
 import { ProgressBar } from "./progress";
 import { Badge } from "@/components/ui/badge";
@@ -92,12 +95,13 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
             <Button
               variant="ghost"
               size="sm"
+              shape="pill"
               onClick={() => {
                 setLevels([]);
                 setType("all");
                 setStatus("all");
               }}
-              className="shrink-0 rounded-full text-primary hover:text-primary"
+              className="shrink-0 text-primary hover:text-primary"
             >
               <RotateCcw aria-hidden /> Clear
             </Button>
@@ -137,8 +141,9 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
                   <Button
                     variant="outline"
                     size="sm"
+                    shape="pill"
                     onClick={() => toggle("chapters", ck)}
-                    className={cn("shrink-0 rounded-full text-[12.5px]", chapters[ck] ? "border-good bg-good-soft text-good hover:text-good" : "text-ink-3 hover:text-ink")}
+                    className={cn("shrink-0 text-[12.5px]", chapters[ck] ? "border-good bg-good-soft text-good hover:text-good" : "text-ink-3 hover:text-ink")}
                     aria-pressed={!!chapters[ck]}
                   >
                     {chapters[ck] ? "Marked done" : "Mark done"}
@@ -152,17 +157,17 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
                 </span>
               </div>
 
-              <ul className="mt-3 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
+              <ItemList className="mt-3">
                 {items.map((q) => {
                   const k = toKey(q.id);
                   const isSolved = hydrated && !!solved[k];
                   return (
                     <li key={q.id} className="flex items-center">
-                      <button
-                        onClick={() => toggle("solved", k)}
-                        className="grid h-full shrink-0 place-items-center self-stretch pl-3.5 pr-1"
+                      <Toggle
+                        pressed={isSolved}
+                        onPressedChange={() => toggle("solved", k)}
+                        className="h-auto shrink-0 self-stretch rounded-none pl-3.5 pr-1 hover:bg-transparent data-[state=on]:bg-transparent"
                         aria-label={isSolved ? `Mark "${q.title}" unsolved` : `Mark "${q.title}" solved`}
-                        aria-pressed={isSolved}
                       >
                         {isSolved ? (
                           <span className="grid h-5 w-5 place-items-center rounded-full bg-good text-surface">
@@ -171,8 +176,8 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
                         ) : (
                           <Circle className="h-5 w-5 text-line-strong" strokeWidth={1.5} />
                         )}
-                      </button>
-                      <Link href={qHref(q.id)} className="group flex min-w-0 flex-1 flex-col gap-1 py-3 pl-2.5 pr-4 hover:bg-sunken/50">
+                      </Toggle>
+                      <Link href={qHref(q.id)} className={cn(itemRowLinkClass, "group flex-col gap-1 py-3 pl-2.5 pr-4")}>
                         <span className={cn("text-[15px] leading-snug group-hover:text-primary", isSolved && "text-ink-2")}>{q.title}</span>
                         <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
                           <LevelPips level={q.level} />
@@ -184,14 +189,16 @@ export function TrackBrowser({ track, questions }: { track: TrackMeta; questions
                     </li>
                   );
                 })}
-              </ul>
+              </ItemList>
             </section>
           );
         })}
         {filtered && shownCount === 0 && (
-          <div className="rounded-xl border border-dashed border-line-strong p-8 text-center text-[14px] text-ink-2">
-            No questions match these filters.
-          </div>
+          <Empty className="border border-dashed border-input p-8 md:p-8">
+            <EmptyHeader>
+              <EmptyDescription className="text-[14px] text-ink-2">No questions match these filters.</EmptyDescription>
+            </EmptyHeader>
+          </Empty>
         )}
       </div>
     </div>

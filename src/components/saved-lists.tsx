@@ -6,8 +6,9 @@ import { X } from "lucide-react";
 import { useProgress, type ListName } from "@/lib/progress/store";
 import { useIndex } from "./search";
 import { LevelPips } from "./level";
-import { qHref } from "@/lib/utils";
+import { cn, qHref } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ItemList, itemRowLinkClass } from "@/components/item-list";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Tab = "revise" | "bookmarks" | "notes";
@@ -52,13 +53,13 @@ export function SavedLists() {
         ) : keys.length === 0 ? (
           <p className="py-10 text-center text-[14.5px] text-ink-2">{TABS.find((t) => t.id === tab)!.empty}</p>
         ) : (
-          <ul className="mt-4 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
+          <ItemList className="mt-4">
             {keys.map((k) => {
               const q = byId.get(fromKey(k));
               if (!q) return null; // question removed from the content
               return (
                 <li key={k} className="flex items-start">
-                  <Link href={qHref(q.id)} className="flex min-w-0 flex-1 flex-col gap-1 px-4 py-3 hover:bg-sunken/50">
+                  <Link href={qHref(q.id)} className={cn(itemRowLinkClass, "flex-col gap-1 px-4 py-3")}>
                     <span className="text-[15px] leading-snug">{q.title}</span>
                     <span className="flex items-center gap-2 text-[12.5px] text-ink-3">
                       <span>{trackShort.get(q.track)}</span>
@@ -80,7 +81,7 @@ export function SavedLists() {
                 </li>
               );
             })}
-          </ul>
+          </ItemList>
         )}
       </TabsContent>
     </Tabs>

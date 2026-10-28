@@ -8,19 +8,29 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        outline: "border-line bg-transparent text-ink-2",
-        highlight: "border-transparent bg-hl-soft text-ink",
-        secondary: "border-transparent bg-sunken text-ink-2",
+        outline: "border-border bg-transparent text-muted-foreground",
+        highlight: "border-transparent bg-hl-soft text-foreground",
+        secondary: "border-transparent bg-muted text-muted-foreground",
+      },
+      shape: {
+        default: "",
+        pill: "rounded-full",
       },
     },
     defaultVariants: {
       variant: "outline",
+      shape: "default",
     },
   },
 );
 
-function Badge({ className, variant, ...props }: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
-  return <span data-slot="badge" className={cn(badgeVariants({ variant }), className)} {...props} />;
+function Badge({
+  className,
+  variant,
+  shape,
+  ...props
+}: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
+  return <span data-slot="badge" className={cn(badgeVariants({ variant, shape }), className)} {...props} />;
 }
 
 export { Badge, badgeVariants };

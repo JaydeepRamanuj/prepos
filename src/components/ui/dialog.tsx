@@ -11,7 +11,7 @@ const DialogTrigger = DialogPrimitive.Trigger;
 const DialogClose = DialogPrimitive.Close;
 
 function DialogOverlay({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
-  return <DialogPrimitive.Overlay data-slot="dialog-overlay" className={cn("fixed inset-0 z-50 bg-ink/30 backdrop-blur-[2px]", className)} {...props} />;
+  return <DialogPrimitive.Overlay data-slot="dialog-overlay" className={cn("fixed inset-0 z-50 bg-foreground/30 backdrop-blur-[2px]", className)} {...props} />;
 }
 
 function DialogContent({ className, children, ...props }: React.ComponentProps<typeof DialogPrimitive.Content>) {
@@ -21,7 +21,7 @@ function DialogContent({ className, children, ...props }: React.ComponentProps<t
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "fixed inset-x-0 top-0 z-50 mx-auto flex h-dvh w-full flex-col overflow-hidden bg-surface shadow-2xl outline-none sm:top-[12vh] sm:h-auto sm:max-h-[70vh] sm:max-w-xl sm:rounded-xl sm:border sm:border-line",
+          "fixed inset-x-0 top-0 z-50 mx-auto flex h-dvh w-full flex-col overflow-hidden bg-card shadow-2xl outline-none sm:top-[12vh] sm:h-auto sm:max-h-[70vh] sm:max-w-xl sm:rounded-xl sm:border sm:border-border",
           className,
         )}
         {...props}
@@ -29,7 +29,7 @@ function DialogContent({ className, children, ...props }: React.ComponentProps<t
         {children}
         <DialogPrimitive.Close
           data-slot="dialog-close"
-          className="absolute right-3 top-3 grid size-8 place-items-center rounded-md text-ink-3 transition-colors hover:bg-sunken hover:text-ink"
+          className="absolute right-3 top-3 grid size-8 place-items-center rounded-md text-muted-foreground transition-colors outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 hover:bg-muted hover:text-foreground"
         >
           <X className="size-4" />
           <span className="sr-only">Close</span>
@@ -44,7 +44,7 @@ function DialogTitle({ className, ...props }: React.ComponentProps<typeof Dialog
 }
 
 function DialogDescription({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Description>) {
-  return <DialogPrimitive.Description data-slot="dialog-description" className={cn("text-[14px] text-ink-2", className)} {...props} />;
+  return <DialogPrimitive.Description data-slot="dialog-description" className={cn("text-[14px] text-muted-foreground", className)} {...props} />;
 }
 
 export { Dialog, DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogTitle, DialogTrigger };

@@ -24,7 +24,7 @@ function ToggleGroupItem({
   return (
     <ToggleGroupPrimitive.Item
       data-slot="toggle-group-item"
-      className={cn(toggleVariants({ variant: variant ?? "outline", size }), "rounded-full data-[state=on]:border-ink data-[state=on]:bg-ink data-[state=on]:text-paper", className)}
+      className={cn(toggleVariants({ variant: variant ?? "outline", size }), "rounded-full data-[state=on]:border-foreground data-[state=on]:bg-foreground data-[state=on]:text-background", className)}
       {...props}
     />
   );

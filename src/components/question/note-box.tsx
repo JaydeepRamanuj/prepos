@@ -32,7 +32,7 @@ export function NoteBox({ id }: { id: string }) {
 
   if (!open && !saved)
     return (
-      <Button variant="ghost" onClick={() => setOpen(true)} className="mt-8 h-auto px-0 text-[14px] hover:bg-transparent">
+      <Button variant="link" onClick={() => setOpen(true)} className="mt-8 text-[14px]">
         <NotebookPen aria-hidden /> Add a personal note
       </Button>
     );

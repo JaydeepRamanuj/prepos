@@ -15,14 +15,14 @@ function SelectTrigger({ className, children, ...props }: React.ComponentProps<t
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "flex h-9 w-fit items-center justify-between gap-2 whitespace-nowrap rounded-lg border border-line bg-surface px-3 text-[14px] text-ink-2 transition-colors outline-none hover:border-line-strong hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 data-[placeholder]:text-ink-3 [&_svg]:shrink-0",
+        "flex h-9 w-fit items-center justify-between gap-2 whitespace-nowrap rounded-lg border border-border bg-card px-3 text-[14px] text-muted-foreground transition-colors outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none hover:border-input hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40 data-[placeholder]:text-muted-foreground [&_svg]:shrink-0",
         className,
       )}
       {...props}
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDown className="size-4 text-ink-3" />
+        <ChevronDown className="size-4 text-muted-foreground" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
@@ -36,7 +36,7 @@ function SelectContent({ className, children, position = "popper", ...props }: R
         position={position}
         sideOffset={6}
         className={cn(
-          "relative z-50 max-h-(--radix-select-content-available-height) min-w-(--radix-select-trigger-width) overflow-hidden rounded-lg border border-line bg-popover text-popover-foreground shadow-xl",
+          "relative z-50 max-h-(--radix-select-content-available-height) min-w-(--radix-select-trigger-width) overflow-hidden rounded-lg border border-border bg-popover text-popover-foreground shadow-xl",
           className,
         )}
         {...props}

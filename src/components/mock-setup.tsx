@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Check, Circle, Play } from "lucide-react";
@@ -13,6 +12,7 @@ import { qHref } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { ItemLink, ItemList } from "@/components/item-list";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 interface T {
@@ -68,25 +68,23 @@ export function MockSetup({ tracks }: { tracks: T[] }) {
         <p className="mt-2 text-[15px] text-ink-2">
           You marked {done} of {finished.ids.length} as solved. Revisit the rest while they&apos;re fresh.
         </p>
-        <ul className="mt-6 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
+        <ItemList className="mt-6">
           {finished.ids.map((id, i) => {
             const ok = !!solved[toKey(id)];
             return (
-              <li key={id}>
-                <Link href={qHref(id)} className="flex items-center gap-3 px-4 py-3 hover:bg-sunken/50">
-                  {ok ? (
-                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-good text-surface">
-                      <Check className="h-3 w-3" strokeWidth={3} />
-                    </span>
-                  ) : (
-                    <Circle className="h-5 w-5 shrink-0 text-line-strong" strokeWidth={1.5} />
-                  )}
-                  <span className="text-[15px] leading-snug">{finished.titles[i]}</span>
-                </Link>
-              </li>
+              <ItemLink key={id} href={qHref(id)} className="items-center">
+                {ok ? (
+                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-good text-surface">
+                    <Check className="h-3 w-3" strokeWidth={3} />
+                  </span>
+                ) : (
+                  <Circle className="h-5 w-5 shrink-0 text-line-strong" strokeWidth={1.5} />
+                )}
+                <span className="text-[15px] leading-snug">{finished.titles[i]}</span>
+              </ItemLink>
             );
           })}
-        </ul>
+        </ItemList>
         <Button
           size="lg"
           className="mt-6"

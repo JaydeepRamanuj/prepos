@@ -13,6 +13,10 @@ import { NoteBox } from "@/components/question/note-box";
 import { MockBar } from "@/components/question/mock-bar";
 import { VisitTracker } from "@/components/question/visit-tracker";
 import { qHref } from "@/lib/utils";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ItemLink, ItemList } from "@/components/item-list";
 
 export const dynamicParams = false;
 
@@ -58,15 +62,21 @@ export default async function QuestionPage({ params }: PageProps<"/tracks/[track
       <VisitTracker id={q.id} title={q.title} />
       <MockBar id={q.id} />
 
-      <nav className="flex items-center gap-1.5 text-[13px] text-ink-3" aria-label="Breadcrumb">
-        <Link href={`/tracks/${track}`} className="hover:text-ink">
-          {meta.title}
-        </Link>
-        <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-        <Link href={`/tracks/${track}#${q.chapter}`} className="truncate hover:text-ink">
-          {chapter?.title}
-        </Link>
-      </nav>
+      <Breadcrumb aria-label="Breadcrumb" className="text-[13px]">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href={`/tracks/${track}`}>{meta.title}</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem className="min-w-0">
+            <BreadcrumbLink asChild className="truncate">
+              <Link href={`/tracks/${track}#${q.chapter}`}>{chapter?.title}</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       <h1 className="mt-3 font-serif text-[25px] font-semibold leading-[1.25] tracking-tight md:text-[32px]">{q.title}</h1>
       <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5">
@@ -94,14 +104,16 @@ export default async function QuestionPage({ params }: PageProps<"/tracks/[track
       )}
 
       <AnswerGate id={q.id}>
-        <section aria-labelledby="ans" className="rounded-xl border border-line bg-surface">
-          <h2 id="ans" className="flex items-center gap-2 border-b border-line px-5 py-3 text-[15px] font-semibold">
-            <span className="hl-mark">Interview answer</span>
-            <span className="text-[12.5px] font-normal text-ink-3">what you&apos;d say out loud</span>
-          </h2>
-          <div className="px-5 py-4">
-            <Prose html={answerHtml} />
-          </div>
+        <section aria-labelledby="ans">
+          <Card className="gap-0 py-0 shadow-none">
+            <h2 id="ans" className="flex items-center gap-2 border-b border-line px-5 py-3 text-[15px] font-semibold">
+              <span className="hl-mark">Interview answer</span>
+              <span className="text-[12.5px] font-normal text-ink-3">what you&apos;d say out loud</span>
+            </h2>
+            <div className="px-5 py-4">
+              <Prose html={answerHtml} />
+            </div>
+          </Card>
         </section>
 
         <Section title="Explanation" html={explanationHtml} />
@@ -119,40 +131,42 @@ export default async function QuestionPage({ params }: PageProps<"/tracks/[track
           <h2 id="rel" className="text-[15px] font-semibold">
             Related questions
           </h2>
-          <ul className="mt-3 divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
+          <ItemList className="mt-3">
             {related.map((r) => (
-              <li key={r.id}>
-                <Link href={qHref(r.id)} className="flex flex-col gap-1 px-4 py-3 hover:bg-sunken/50">
-                  <span className="text-[15px] leading-snug">{r.title}</span>
-                  <span className="flex items-center gap-2 text-[12.5px] text-ink-3">
-                    {r.track !== track && <span>{trackShort.get(r.track)}</span>}
-                    <LevelPips level={r.level} />
-                  </span>
-                </Link>
-              </li>
+              <ItemLink key={r.id} href={qHref(r.id)} className="flex-col items-stretch gap-1">
+                <span className="text-[15px] leading-snug">{r.title}</span>
+                <span className="flex items-center gap-2 text-[12.5px] text-ink-3">
+                  {r.track !== track && <span>{trackShort.get(r.track)}</span>}
+                  <LevelPips level={r.level} />
+                </span>
+              </ItemLink>
             ))}
-          </ul>
+          </ItemList>
         </section>
       )}
 
       <nav className="mt-10 grid grid-cols-2 gap-3 border-t border-line pt-6 text-[14px]" aria-label="Question navigation">
         {prev ? (
-          <Link href={qHref(prev.id)} className="group flex min-w-0 flex-col gap-1">
-            <span className="flex items-center gap-1 text-[12.5px] text-ink-3">
-              <ChevronLeft className="h-3.5 w-3.5" aria-hidden /> Previous
-            </span>
-            <span className="line-clamp-2 group-hover:text-primary">{prev.title}</span>
-          </Link>
+          <Button asChild variant="outline" className="h-auto min-w-0 flex-col items-start gap-1 whitespace-normal px-3.5 py-3 text-left">
+            <Link href={qHref(prev.id)}>
+              <span className="flex items-center gap-1 text-[12.5px] text-ink-3">
+                <ChevronLeft className="h-3.5 w-3.5" aria-hidden /> Previous
+              </span>
+              <span className="line-clamp-2 font-normal">{prev.title}</span>
+            </Link>
+          </Button>
         ) : (
           <span />
         )}
         {next && (
-          <Link href={qHref(next.id)} className="group flex min-w-0 flex-col items-end gap-1 text-right">
-            <span className="flex items-center gap-1 text-[12.5px] text-ink-3">
-              Next <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-            </span>
-            <span className="line-clamp-2 group-hover:text-primary">{next.title}</span>
-          </Link>
+          <Button asChild variant="outline" className="h-auto min-w-0 flex-col items-end gap-1 whitespace-normal px-3.5 py-3 text-right">
+            <Link href={qHref(next.id)}>
+              <span className="flex items-center gap-1 text-[12.5px] text-ink-3">
+                Next <ChevronRight className="h-3.5 w-3.5" aria-hidden />
+              </span>
+              <span className="line-clamp-2 font-normal">{next.title}</span>
+            </Link>
+          </Button>
         )}
       </nav>
     </article>

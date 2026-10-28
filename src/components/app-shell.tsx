@@ -8,7 +8,11 @@ import { Bookmark, Home, Layers, LogIn, LogOut, Moon, Search, Shuffle, Sun, User
 import { useSearch } from "./search";
 import { useAuth } from "@/lib/progress/sync";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Kbd } from "@/components/ui/kbd";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const NAV = [
@@ -51,7 +55,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Button variant="outline" onClick={open} aria-label="Search questions" className="h-9 justify-start px-2.5 text-ink-3 md:w-56">
               <Search aria-hidden />
               <span className="hidden md:inline">Search</span>
-              <kbd className="ml-auto hidden rounded border border-line px-1.5 font-sans text-[11px] md:inline">⌘K</kbd>
+              <Kbd className="ml-auto hidden md:inline-flex">⌘K</Kbd>
             </Button>
             <ThemeToggle />
             <AccountMenu />
@@ -103,15 +107,16 @@ function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   const dark = mounted && resolvedTheme === "dark";
+  const label = dark ? "Switch to light theme" : "Switch to dark theme";
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(dark ? "light" : "dark")}
-      aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-    >
-      {mounted ? dark ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" /> : <span className="size-[18px]" />}
-    </Button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="ghost" size="icon" onClick={() => setTheme(dark ? "light" : "dark")} aria-label={label}>
+          {mounted ? dark ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" /> : <Skeleton className="size-[18px] rounded-full" />}
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>{label}</TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -119,7 +124,7 @@ function AccountMenu() {
   const { enabled, user, loading, signIn, signOut, syncError } = useAuth();
 
   if (!enabled) return null;
-  if (loading) return <span className="size-9" />;
+  if (loading) return <Skeleton className="size-9 rounded-full" />;
 
   if (!user)
     return (
@@ -132,16 +137,21 @@ function AccountMenu() {
   return (
     <div className="relative">
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon" aria-label="Account" className="overflow-hidden rounded-full p-0">
-            {user.photoURL ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={user.photoURL} alt="" className="size-full object-cover" referrerPolicy="no-referrer" />
-            ) : (
-              <UserRound />
-            )}
-          </Button>
-        </DropdownMenuTrigger>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" shape="pill" aria-label="Account" className="overflow-hidden p-0">
+                {user.photoURL ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={user.photoURL} alt="" className="size-full object-cover" referrerPolicy="no-referrer" />
+                ) : (
+                  <UserRound />
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+          </TooltipTrigger>
+          <TooltipContent>Account</TooltipContent>
+        </Tooltip>
         <DropdownMenuContent className="w-64">
           <DropdownMenuLabel className="font-normal">
             <div className="truncate font-medium">{user.displayName ?? "Signed in"}</div>
@@ -156,7 +166,14 @@ function AccountMenu() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      {syncError && <span className="absolute right-0 top-0 size-2.5 rounded-full border-2 border-paper bg-lv-hard" />}
+      {syncError && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Badge role="img" aria-label={`Sync error: ${syncError}`} className="absolute right-0 top-0 size-2.5 rounded-full border-2 border-paper bg-lv-hard p-0" />
+          </TooltipTrigger>
+          <TooltipContent>{`Progress isn't syncing: ${syncError}`}</TooltipContent>
+        </Tooltip>
+      )}
     </div>
   );
 }

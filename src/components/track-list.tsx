@@ -1,7 +1,7 @@
-import Link from "next/link";
 import type { TrackMeta } from "@/lib/content/types";
 import { TrackIcon } from "./track-icon";
 import { SolvedProgress } from "./progress";
+import { ItemLink, ItemList } from "@/components/item-list";
 
 export interface TrackSummary {
   meta: TrackMeta;
@@ -30,25 +30,23 @@ export function TrackList({ tracks, showDescriptions = false }: { tracks: TrackS
               </h2>
               <p className="text-[13px] text-ink-3">{g.blurb}</p>
             </div>
-            <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
+            <ItemList>
               {items.map((t) => (
-                <li key={t.meta.id}>
-                  <Link href={`/tracks/${t.meta.id}`} className="group flex items-start gap-3.5 px-4 py-3.5 hover:bg-sunken/60">
-                    <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
-                      <TrackIcon name={t.meta.icon} className="h-[18px] w-[18px]" />
+                <ItemLink key={t.meta.id} href={`/tracks/${t.meta.id}`} className="group items-start gap-3.5 py-3.5">
+                  <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
+                    <TrackIcon name={t.meta.icon} className="h-[18px] w-[18px]" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-baseline justify-between gap-3">
+                      <span className="text-[15.5px] font-medium group-hover:text-primary">{t.meta.title}</span>
+                      <span className="shrink-0 text-[12.5px] text-ink-3">{t.ids.length} questions</span>
                     </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="flex items-baseline justify-between gap-3">
-                        <span className="text-[15.5px] font-medium group-hover:text-primary">{t.meta.title}</span>
-                        <span className="shrink-0 text-[12.5px] text-ink-3">{t.ids.length} questions</span>
-                      </span>
-                      {showDescriptions && <span className="mt-0.5 block text-[13.5px] leading-snug text-ink-2">{t.meta.description}</span>}
-                      <SolvedProgress ids={t.ids} className="mt-2.5" />
-                    </span>
-                  </Link>
-                </li>
+                    {showDescriptions && <span className="mt-0.5 block text-[13.5px] leading-snug text-ink-2">{t.meta.description}</span>}
+                    <SolvedProgress ids={t.ids} className="mt-2.5" />
+                  </span>
+                </ItemLink>
               ))}
-            </ul>
+            </ItemList>
           </section>
         );
       })}

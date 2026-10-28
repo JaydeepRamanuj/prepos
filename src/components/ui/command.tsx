@@ -36,11 +36,11 @@ function CommandDialog({
 
 function CommandInput({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Input>) {
   return (
-    <div data-slot="command-input-wrapper" className="flex h-14 items-center gap-2 border-b border-line px-4 pr-12">
-      <Search className="size-4 shrink-0 text-ink-3" aria-hidden />
+    <div data-slot="command-input-wrapper" className="flex h-14 items-center gap-2 border-b border-border px-4 pr-12">
+      <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden />
       <CommandPrimitive.Input
         data-slot="command-input"
-        className={cn("flex h-full w-full bg-transparent text-[16px] placeholder:text-ink-3 disabled:opacity-40", className)}
+        className={cn("flex h-full w-full bg-transparent text-[16px] placeholder:text-muted-foreground disabled:opacity-40", className)}
         {...props}
       />
     </div>
@@ -58,14 +58,14 @@ function CommandList({ className, ...props }: React.ComponentProps<typeof Comman
 }
 
 function CommandEmpty(props: React.ComponentProps<typeof CommandPrimitive.Empty>) {
-  return <CommandPrimitive.Empty data-slot="command-empty" className="px-3 py-6 text-[14px] text-ink-3" {...props} />;
+  return <CommandPrimitive.Empty data-slot="command-empty" className="px-3 py-6 text-[14px] text-muted-foreground" {...props} />;
 }
 
 function CommandGroup({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Group>) {
   return (
     <CommandPrimitive.Group
       data-slot="command-group"
-      className={cn("overflow-hidden p-1 text-ink [&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[12px] [&_[cmdk-group-heading]]:text-ink-3", className)}
+      className={cn("overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[12px] [&_[cmdk-group-heading]]:text-muted-foreground", className)}
       {...props}
     />
   );

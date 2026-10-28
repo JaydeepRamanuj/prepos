@@ -36,7 +36,7 @@ export function HomeHero({ allIds, trackCount, coreCount }: { allIds: string[]; 
 
       <div className="mt-6 flex flex-wrap gap-2.5">
         {hydrated && last ? (
-          <Button asChild className="group h-auto max-w-full rounded-xl px-4 py-3">
+          <Button asChild size="xl" className="group max-w-full">
             <Link href={qHref(last.id)}>
               <span className="min-w-0 text-left">
                 <span className="block text-[12px] opacity-80">Continue where you left off</span>
@@ -46,19 +46,19 @@ export function HomeHero({ allIds, trackCount, coreCount }: { allIds: string[]; 
             </Link>
           </Button>
         ) : (
-          <Button asChild className="h-auto rounded-xl px-4 py-3 text-[15px] font-medium">
+          <Button asChild size="xl">
             <Link href="/tracks/javascript">
               Start with JavaScript <ArrowRight aria-hidden />
             </Link>
           </Button>
         )}
-        <Button asChild variant="outline" className="h-auto rounded-xl px-4 py-3 text-[15px]">
+        <Button asChild variant="outline" size="xl">
           <Link href="/revise">
             <Zap className="text-ink-3" aria-hidden /> Quick revise
-            {hydrated && reviseCount > 0 && <Badge variant="highlight" className="rounded-full px-1.5">{reviseCount}</Badge>}
+            {hydrated && reviseCount > 0 && <Badge variant="highlight" shape="pill">{reviseCount}</Badge>}
           </Link>
         </Button>
-        <Button asChild variant="outline" className="h-auto rounded-xl px-4 py-3 text-[15px]">
+        <Button asChild variant="outline" size="xl">
           <Link href="/mock">
             <Shuffle className="text-ink-3" aria-hidden /> Mock round
           </Link>
@@ -68,7 +68,7 @@ export function HomeHero({ allIds, trackCount, coreCount }: { allIds: string[]; 
       {enabled && !loading && !user && (
         <p className="mt-5 text-[13.5px] text-ink-3">
           Progress is saved on this device.{" "}
-          <Button variant="link" onClick={signIn} className="align-baseline text-[13.5px] font-medium text-primary underline underline-offset-2">
+          <Button variant="link" onClick={signIn} className="align-baseline text-[13.5px]">
             Sign in with Google
           </Button>{" "}
           to keep it across devices.
