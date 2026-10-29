@@ -4,6 +4,7 @@ import { getTrackSummaries } from "@/lib/content/summaries";
 import { ItemLink, ItemList } from "@/components/item-list";
 import { TrackIcon } from "@/components/track-icon";
 import { ReviseListLink } from "@/components/revise-list-link";
+import { copy } from "@/lib/copy";
 
 export const metadata: Metadata = { title: "Quick revise" };
 
@@ -13,7 +14,7 @@ export default function RevisePage() {
     <div className="mx-auto max-w-[720px] pt-8 md:pt-12">
       <h1 className="font-serif text-[28px] font-semibold tracking-tight md:text-[34px]">Quick revise</h1>
       <p className="mt-2 max-w-lg text-[15px] text-ink-2">
-        Just the interview answers, one per screen. Swipe up for the next one — made for the commute.
+        {copy.reviseIntro}
       </p>
 
       <ReviseListLink />

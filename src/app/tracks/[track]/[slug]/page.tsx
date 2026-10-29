@@ -10,6 +10,7 @@ import { QuestionActions, NextBar } from "@/components/question/actions";
 import { Clues } from "@/components/question/clues";
 import { AnswerGate } from "@/components/question/answer-gate";
 import { NoteBox } from "@/components/question/note-box";
+import { copy } from "@/lib/copy";
 import { MockBar } from "@/components/question/mock-bar";
 import { VisitTracker } from "@/components/question/visit-tracker";
 import { qHref } from "@/lib/utils";
@@ -107,7 +108,7 @@ export default async function QuestionPage({ params }: PageProps<"/tracks/[track
         <section aria-labelledby="ans">
           <Card className="gap-0 py-0 shadow-none">
             <h2 id="ans" className="flex items-center gap-2 border-b border-line px-5 py-3 text-[15px] font-semibold">
-              <span className="hl-mark">Interview answer</span>
+              <span className="hl-mark">{copy.answerLabel}</span>
               <span className="text-[12.5px] font-normal text-ink-3">what you&apos;d say out loud</span>
             </h2>
             <div className="px-5 py-4">

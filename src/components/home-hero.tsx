@@ -8,6 +8,7 @@ import { useSolvedCount, ProgressBar } from "./progress";
 import { qHref } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { copy } from "@/lib/copy";
 
 export function HomeHero({ allIds, trackCount, coreCount }: { allIds: string[]; trackCount: number; coreCount: number }) {
   const solved = useSolvedCount(allIds);
@@ -25,7 +26,7 @@ export function HomeHero({ allIds, trackCount, coreCount }: { allIds: string[]; 
             {solved} of {total} questions solved.
           </>
         ) : (
-          <>{total} questions between you and the next interview.</>
+          <>{copy.heroUnsolved(total)}</>
         )}
       </h1>
       <p className="mt-3 max-w-xl text-[15.5px] leading-relaxed text-ink-2">

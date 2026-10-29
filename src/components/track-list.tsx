@@ -2,6 +2,7 @@ import type { TrackMeta } from "@/lib/content/types";
 import { TrackIcon } from "./track-icon";
 import { SolvedProgress } from "./progress";
 import { ItemLink, ItemList } from "@/components/item-list";
+import { copy } from "@/lib/copy";
 
 export interface TrackSummary {
   meta: TrackMeta;
@@ -10,7 +11,7 @@ export interface TrackSummary {
 }
 
 const GROUPS: { id: TrackMeta["group"]; title: string; blurb: string }[] = [
-  { id: "core", title: "Core", blurb: "The three tracks most frontend interviews are built on." },
+  { id: "core", title: "Core", blurb: copy.coreBlurb },
   { id: "frontend", title: "Frontend toolkit", blurb: "TypeScript, CSS, state and performance." },
   { id: "engineering", title: "Engineering depth", blurb: "Debugging, architecture, building from scratch, the web platform and the backend." },
   { id: "career", title: "Working style", blurb: "How you work with AI, and how you talk about your work." },

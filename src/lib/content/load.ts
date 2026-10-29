@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { officeTrackDescriptions, useInterviewPrepCopy } from "@/lib/copy";
 import { parseQuestionFile } from "./parse";
 import type { QuestionIndexEntry, QuestionSource, TrackMeta } from "./types";
 
@@ -26,6 +27,7 @@ function readTracks(problems: ContentProblem[]): TrackMeta[] {
     try {
       const meta = JSON.parse(fs.readFileSync(metaPath, "utf8")) as TrackMeta;
       if (meta.id !== dir) problems.push({ file: metaPath, level: "error", message: `id "${meta.id}" must match folder "${dir}"` });
+      if (!useInterviewPrepCopy) meta.description = officeTrackDescriptions[meta.id] ?? meta.description;
       tracks.push(meta);
     } catch (e) {
       problems.push({ file: metaPath, level: "error", message: `invalid JSON: ${(e as Error).message}` });

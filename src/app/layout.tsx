@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { AppShell } from "@/components/app-shell";
+import { copy } from "@/lib/copy";
 
 export const metadata: Metadata = {
-  title: { default: "PrepOS — frontend interview prep", template: "%s · PrepOS" },
-  description:
-    "Frontend interview questions with interview-ready answers, deep explanations and clues — JavaScript, React, Next.js and everything around them.",
+  title: { default: copy.siteTitle, template: "%s · PrepOS" },
+  description: copy.siteDescription,
   applicationName: "PrepOS",
   appleWebApp: { capable: true, title: "PrepOS", statusBarStyle: "default" },
 };
